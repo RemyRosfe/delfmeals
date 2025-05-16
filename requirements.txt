@@ -1,0 +1,26 @@
+# requirements.txt
+# Dépendances pour DelfMeals
+
+# Base de données
+SQLAlchemy==2.0.25
+
+# Interface web (pour plus tard)
+Flask==3.0.0
+Flask-SQLAlchemy==3.1.1
+WTForms==3.1.1
+Flask-WTF==1.2.1
+
+# OCR (pour plus tard)
+# pytesseract==0.3.10
+# Pillow==10.1.0
+
+# Utilitaires
+python-dateutil==2.8.2
+
+# Export/Import
+openpyxl==3.1.2
+pandas==2.1.4
+
+# Développement et tests
+pytest==7.4.3
+pytest-cov==4.1.0

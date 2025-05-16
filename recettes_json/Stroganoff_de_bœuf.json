@@ -1,0 +1,72 @@
+{
+  "nom": "Stroganoff de bœuf",
+  "type_plat": "Plats",
+  "origine": "",
+  "categorie": "Viande rouge",
+  "nb_personnes": 4,
+  "temps_preparation": 30,
+  "difficulte": "Facile",
+  "saisons": [
+    "Toutes saisons"
+  ],
+  "ingredients": [
+    {
+      "nom": "filet de bœuf",
+      "quantité": "600",
+      "unité": "g"
+    },
+    {
+      "nom": "farine",
+      "quantité": "2",
+      "unité": "cuil. à soupe"
+    },
+    {
+      "nom": "beurre",
+      "quantité": "40",
+      "unité": "g"
+    },
+    {
+      "nom": "bouillon de bœuf",
+      "quantité": "40",
+      "unité": "cl"
+    },
+    {
+      "nom": "concentré de tomate",
+      "quantité": "2",
+      "unité": "cuil. à soupe"
+    },
+    {
+      "nom": "moutarde à l’ancienne",
+      "quantité": "1",
+      "unité": "cuil. à café"
+    },
+    {
+      "nom": "huile de tournesol",
+      "quantité": "1",
+      "unité": "cuil. à soupe"
+    },
+    {
+      "nom": "oignon",
+      "quantité": "1",
+      "unité": ""
+    },
+    {
+      "nom": "crème fraîche épaisse",
+      "quantité": "3",
+      "unité": "cuil. à soupe"
+    },
+    {
+      "nom": "sel-poivre",
+      "quantité": "",
+      "unité": ""
+    }
+  ],
+  "preparation": [
+    "Coupez la viande en fins filets. Salez, poivrez et réservez au frais.",
+    "Faites brunir la farine à feu doux dans une Sauteuse avec la moitié du beurre. Mouillez avec le bouillon, ajoutez le concentré de tomate et la moutarde. Mélangez. Portez à ébullition, passez au tamis et réservez.",
+    "Faites chauffer le reste du beurre et l’huile et faites-y sauter l’oignon haché avec le bœuf émincé.",
+    "Versez la sauce et la crème sur la viande et les oignons et laissez mijoter à feu doux en mélangeant pendant 10 minutes.",
+    "Servez immédiatement."
+  ],
+  "notes": "Ajoutez des champignons frais émincés revenus. Servez avec du riz nature ou des pommes de terre bouillies."
+}

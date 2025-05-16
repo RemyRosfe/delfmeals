@@ -1,0 +1,203 @@
+{% extends "base.html" %}
+
+{% block title %}Recettes - DelfMeals{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h1>📚 Mes Recettes</h1>
+    <a href="{{ url_for('recettes.add_recette') }}" class="btn btn-primary">
+        <i class="fas fa-plus"></i> Ajouter une recette
+    </a>
+</div>
+
+<!-- Filtres -->
+<div class="card mb-4">
+    <div class="card-header">
+        <h5 class="mb-0">🔍 Filtres</h5>
+    </div>
+    <div class="card-body">
+        <form method="GET" id="filterForm">
+            <div class="row">
+                <div class="col-md-2 mb-2">
+                    <label for="categorie" class="form-label">Catégorie</label>
+                    <select class="form-select" name="categorie" id="categorie">
+                        <option value="all">Toutes</option>
+                        {% for cat in categories %}
+                        <option value="{{ cat }}" {% if current_filters.categorie == cat %}selected{% endif %}>
+                            {{ cat }}
+                        </option>
+                        {% endfor %}
+                    </select>
+                </div>
+                
+                <div class="col-md-2 mb-2">
+                    <label for="difficulte" class="form-label">Difficulté</label>
+                    <select class="form-select" name="difficulte" id="difficulte">
+                        <option value="all">Toutes</option>
+                        {% for diff in difficultes %}
+                        <option value="{{ diff }}" {% if current_filters.difficulte == diff %}selected{% endif %}>
+                            {{ diff }}
+                        </option>
+                        {% endfor %}
+                    </select>
+                </div>
+                
+                <div class="col-md-2 mb-2">
+                    <label for="origine" class="form-label">Origine</label>
+                    <select class="form-select" name="origine" id="origine">
+                        <option value="all">Toutes</option>
+                        {% for orig in origines %}
+                        <option value="{{ orig }}" {% if current_filters.origine == orig %}selected{% endif %}>
+                            {{ orig }}
+                        </option>
+                        {% endfor %}
+                    </select>
+                </div>
+                
+                <div class="col-md-2 mb-2">
+                    <label for="saison" class="form-label">Saison</label>
+                    <select class="form-select" name="saison" id="saison">
+                        <option value="all">Toutes</option>
+                        {% for saison in saisons %}
+                        <option value="{{ saison }}" {% if current_filters.saison == saison %}selected{% endif %}>
+                            {{ saison }}
+                        </option>
+                        {% endfor %}
+                    </select>
+                </div>
+                
+                <div class="col-md-2 mb-2">
+                    <label for="temps_max" class="form-label">Temps max (min)</label>
+                    <select class="form-select" name="temps_max" id="temps_max">
+                        <option value="">Tous</option>
+                        <option value="15" {% if current_filters.temps_max == 15 %}selected{% endif %}>≤ 15 min</option>
+                        <option value="30" {% if current_filters.temps_max == 30 %}selected{% endif %}>≤ 30 min</option>
+                        <option value="45" {% if current_filters.temps_max == 45 %}selected{% endif %}>≤ 45 min</option>
+                        <option value="60" {% if current_filters.temps_max == 60 %}selected{% endif %}>≤ 1h</option>
+                    </select>
+                </div>
+                
+                <div class="col-md-2 mb-2 d-flex align-items-end">
+                    <button type="submit" class="btn btn-outline-primary w-100">
+                        Filtrer
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Résultats -->
+<div class="row">
+    {% if recettes %}
+        {% for recette in recettes %}
+        <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
+            <div class="card h-100">
+                <!-- Image placeholder - remplacez par vos images ! -->
+                <div class="card-img-top bg-light d-flex align-items-center justify-content-center" 
+                     style="height: 200px;">
+                    <span class="text-muted">
+                        {{ recette['Catégorie'][:1] }}🍽️
+                    </span>
+                </div>
+                
+                <div class="card-body">
+                    <h5 class="card-title">{{ recette['Recette'] }}</h5>
+                    <p class="card-text">
+                        <small class="text-muted">
+                            🍖 {{ recette['Catégorie'] }}<br>
+                            ⏱️ {{ format_temps(recette['Temps de préparation']) }}<br>
+                            📊 {{ recette['Difficulté'] }}<br>
+                            👥 {{ recette['Nombre de personnes'] }} personnes
+                        </small>
+                    </p>
+                    {% if recette['Saison'] %}
+                    <div class="mb-2">
+                        {% for saison in recette['Saison'] %}
+                        <span class="badge bg-secondary me-1">{{ saison }}</span>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                </div>
+                
+                <div class="card-footer">
+                    <div class="btn-group w-100" role="group">
+                        <a href="{{ url_for('recettes.detail_recette', recette_id=recette.get('id', loop.index)) }}" 
+                           class="btn btn-outline-primary btn-sm">
+                            👁️ Voir
+                        </a>
+                        <a href="{{ url_for('recettes.edit_recette', recette_id=recette.get('id', loop.index)) }}" 
+                           class="btn btn-outline-warning btn-sm">
+                            ✏️ Modifier
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    {% else %}
+        <div class="col-12">
+            <div class="alert alert-info text-center">
+                <h4>Aucune recette trouvée 😕</h4>
+                <p>Essayez de modifier vos filtres ou 
+                   <a href="{{ url_for('recettes.add_recette') }}">ajoutez votre première recette</a> !
+                </p>
+            </div>
+        </div>
+    {% endif %}
+</div>
+
+<!-- Pagination -->
+{% if pagination.pages > 1 %}
+<nav aria-label="Navigation des recettes">
+    <ul class="pagination justify-content-center">
+        {% if pagination.has_prev %}
+        <li class="page-item">
+            <a class="page-link" href="{{ url_for('recettes.list_recettes', page=pagination.prev_num) }}">
+                Précédent
+            </a>
+        </li>
+        {% endif %}
+        
+        {% for page_num in range(1, pagination.pages + 1) %}
+            {% if page_num <= 3 or page_num > pagination.pages - 3 or 
+                  (page_num >= pagination.page - 1 and page_num <= pagination.page + 1) %}
+            <li class="page-item {% if page_num == pagination.page %}active{% endif %}">
+                <a class="page-link" href="{{ url_for('recettes.list_recettes', page=page_num) }}">
+                    {{ page_num }}
+                </a>
+            </li>
+            {% elif page_num == 4 or page_num == pagination.pages - 3 %}
+            <li class="page-item disabled">
+                <span class="page-link">…</span>
+            </li>
+            {% endif %}
+        {% endfor %}
+        
+        {% if pagination.has_next %}
+        <li class="page-item">
+            <a class="page-link" href="{{ url_for('recettes.list_recettes', page=pagination.next_num) }}">
+                Suivant
+            </a>
+        </li>
+        {% endif %}
+    </ul>
+</nav>
+{% endif %}
+{% endblock %}
+
+{% block scripts %}
+<script>
+// Auto-submit du formulaire de filtres
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('filterForm');
+    const selects = form.querySelectorAll('select');
+    
+    selects.forEach(select => {
+        select.addEventListener('change', function() {
+            form.submit();
+        });
+    });
+});
+</script>
+{% endblock %}

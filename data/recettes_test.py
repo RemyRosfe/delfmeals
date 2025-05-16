@@ -1,0 +1,328 @@
+# data/recettes_test.py
+# Base de données de recettes test pour DelfMeals
+
+recettes_test = [
+    {
+        "Recette": "Tarte aux poireaux et aux lardons",
+        "Type de plat": "Plats",
+        "Origine": "Cuisine française",
+        "Catégorie": "Viande rouge",
+        "Nombre de personnes": 4,
+        "Temps de préparation": 45,
+        "Difficulté": "Normal",
+        "Saison": ["Toutes saisons"],
+        "Préparation": [
+            "Préchauffer le four à 210°C (thermostat 7).",
+            "Faire la pâte à tarte : malaxer le beurre et la farine, l'eau, étaler puis mettre dans le plat.",
+            "Émincer les poireaux. Les faire dorer dans un peu de beurre.",
+            "Faire dorer les lardons à part.",
+            "Les égoutter soigneusement avant de les ajouter aux poireaux.",
+            "Faire l'appareil : mêler les oeufs, la crème, le sel et le poivre.",
+            "Étaler les poireaux et les lardons sur la pâte.",
+            "Parsemer de gruyère râpé, couvrir avec l'appareil.",
+            "Mettre au four 25 min."
+        ],
+        "Ingrédients": [
+            {"nom": "farine", "quantité": "250", "unité": "g"},
+            {"nom": "beurre", "quantité": "140", "unité": "g"},
+            {"nom": "poireaux", "quantité": "3", "unité": ""},
+            {"nom": "lardons", "quantité": "400", "unité": "g"},
+            {"nom": "fromage rapé", "quantité": "100", "unité": "g"},
+            {"nom": "crème fraîche", "quantité": "25", "unité": "cl"},
+            {"nom": "œufs", "quantité": "3", "unité": ""},
+            {"nom": "sel", "quantité": "", "unité": ""},
+            {"nom": "poivre", "quantité": "", "unité": ""}
+        ],
+        "Note": "Peut être préparée à l'avance"
+    },
+    {
+        "Recette": "Pâtes carbonara express",
+        "Type de plat": "Plats",
+        "Origine": "Cuisine italienne",
+        "Catégorie": "Viande rouge",
+        "Nombre de personnes": 4,
+        "Temps de préparation": 20,
+        "Difficulté": "Rapide",
+        "Saison": ["Toutes saisons"],
+        "Préparation": [
+            "Faire cuire les pâtes al dente selon les instructions.",
+            "Faire revenir les lardons dans une poêle.",
+            "Battre les œufs avec le parmesan, sel et poivre.",
+            "Égoutter les pâtes en gardant un peu d'eau de cuisson.",
+            "Mélanger les pâtes chaudes avec les œufs battus hors du feu.",
+            "Ajouter les lardons et l'eau de cuisson si besoin.",
+            "Servir immédiatement avec du parmesan."
+        ],
+        "Ingrédients": [
+            {"nom": "pâtes", "quantité": "500", "unité": "g"},
+            {"nom": "lardons", "quantité": "200", "unité": "g"},
+            {"nom": "œufs", "quantité": "3", "unité": ""},
+            {"nom": "parmesan râpé", "quantité": "100", "unité": "g"},
+            {"nom": "poivre noir", "quantité": "", "unité": ""},
+            {"nom": "sel", "quantité": "", "unité": ""}
+        ],
+        "Note": "Attention à ne pas cuire les œufs !"
+    },
+    {
+        "Recette": "Curry de poulet indien",
+        "Type de plat": "Plats",
+        "Origine": "Cuisine indienne",
+        "Catégorie": "Volaille",
+        "Nombre de personnes": 4,
+        "Temps de préparation": 35,
+        "Difficulté": "Normal",
+        "Saison": ["Toutes saisons"],
+        "Préparation": [
+            "Couper le poulet en morceaux et les faire dorer.",
+            "Hacher finement l'oignon et l'ail.",
+            "Faire revenir oignon et ail dans l'huile.",
+            "Ajouter les épices et faire revenir 1 minute.",
+            "Ajouter le lait de coco et les tomates concassées.",
+            "Remettre le poulet et laisser mijoter 20 minutes.",
+            "Servir avec du riz basmati."
+        ],
+        "Ingrédients": [
+            {"nom": "escalopes de poulet", "quantité": "600", "unité": "g"},
+            {"nom": "lait de coco", "quantité": "400", "unité": "ml"},
+            {"nom": "tomates concassées", "quantité": "400", "unité": "g"},
+            {"nom": "oignon", "quantité": "1", "unité": ""},
+            {"nom": "gousses d'ail", "quantité": "3", "unité": ""},
+            {"nom": "curry en poudre", "quantité": "2", "unité": "cuillères à soupe"},
+            {"nom": "riz basmati", "quantité": "300", "unité": "g"}
+        ],
+        "Note": "Accompagner de naan ou chapati"
+    },
+    {
+        "Recette": "Salade de quinoa méditerranéenne",
+        "Type de plat": "Plats",
+        "Origine": "Cuisine méditerranéenne",
+        "Catégorie": "Végétarien",
+        "Nombre de personnes": 4,
+        "Temps de préparation": 25,
+        "Difficulté": "Rapide",
+        "Saison": ["Printemps", "Été"],
+        "Préparation": [
+            "Cuire le quinoa selon les instructions (environ 15 min).",
+            "Couper les tomates cerises en deux.",
+            "Émincer le concombre et l'oignon rouge.",
+            "Préparer la vinaigrette avec huile d'olive, citron, sel.",
+            "Mélanger quinoa refroidi avec légumes.",
+            "Ajouter feta émiettée et olives.",
+            "Assaisonner et parsemer de menthe fraîche."
+        ],
+        "Ingrédients": [
+            {"nom": "quinoa", "quantité": "250", "unité": "g"},
+            {"nom": "tomates cerises", "quantité": "300", "unité": "g"},
+            {"nom": "concombre", "quantité": "1", "unité": ""},
+            {"nom": "oignon rouge", "quantité": "1", "unité": ""},
+            {"nom": "feta", "quantité": "200", "unité": "g"},
+            {"nom": "olives noires", "quantité": "100", "unité": "g"},
+            {"nom": "menthe fraîche", "quantité": "1", "unité": "bouquet"},
+            {"nom": "huile d'olive", "quantité": "4", "unité": "cuillères à soupe"},
+            {"nom": "citron", "quantité": "1", "unité": ""}
+        ],
+        "Note": "Excellent pour les déjeuners d'été"
+    },
+    {
+        "Recette": "Fish and chips maison",
+        "Type de plat": "Plats",
+        "Origine": "Cuisine américaine",
+        "Catégorie": "Poisson",
+        "Nombre de personnes": 4,
+        "Temps de préparation": 40,
+        "Difficulté": "Normal",
+        "Saison": ["Toutes saisons"],
+        "Préparation": [
+            "Éplucher et couper les pommes de terre en frites.",
+            "Les blanchir 5 minutes dans l'eau bouillante.",
+            "Préparer la pâte à beignets avec farine, bière et sel.",
+            "Tremper les filets de poisson dans la pâte.",
+            "Frire les frites puis les poissons dans l'huile chaude.",
+            "Égoutter sur papier absorbant.",
+            "Servir avec sauce tartare et petits pois."
+        ],
+        "Ingrédients": [
+            {"nom": "filets de cabillaud", "quantité": "600", "unité": "g"},
+            {"nom": "pommes de terre", "quantité": "800", "unité": "g"},
+            {"nom": "farine", "quantité": "150", "unité": "g"},
+            {"nom": "bière blonde", "quantité": "200", "unité": "ml"},
+            {"nom": "huile de friture", "quantité": "1", "unité": "litre"},
+            {"nom": "petits pois", "quantité": "300", "unité": "g"},
+            {"nom": "sauce tartare", "quantité": "1", "unité": "pot"}
+        ],
+        "Note": "Plaisir coupable mais délicieux !"
+    },
+    {
+        "Recette": "Pad Thaï aux crevettes",
+        "Type de plat": "Plats",
+        "Origine": "Cuisine asiatique",
+        "Catégorie": "Poisson",
+        "Nombre de personnes": 4,
+        "Temps de préparation": 30,
+        "Difficulté": "Normal",
+        "Saison": ["Toutes saisons"],
+        "Préparation": [
+            "Faire tremper les nouilles de riz dans l'eau chaude.",
+            "Préparer la sauce : mélanger sauce fish, tamarin, sucre.",
+            "Faire revenir l'ail et les échalotes dans l'huile.",
+            "Ajouter les crevettes et faire cuire.",
+            "Ajouter nouilles égouttées et sauce, mélanger.",
+            "Incorporer œufs battus et pousses de soja.",
+            "Servir avec cacahuètes concassées et citron vert."
+        ],
+        "Ingrédients": [
+            {"nom": "nouilles de riz", "quantité": "300", "unité": "g"},
+            {"nom": "crevettes", "quantité": "400", "unité": "g"},
+            {"nom": "œufs", "quantité": "2", "unité": ""},
+            {"nom": "échalotes", "quantité": "2", "unité": ""},
+            {"nom": "pousses de soja", "quantité": "200", "unité": "g"},
+            {"nom": "sauce fish", "quantité": "3", "unité": "cuillères à soupe"},
+            {"nom": "pâte de tamarin", "quantité": "2", "unité": "cuillères à soupe"},
+            {"nom": "cacahuètes", "quantité": "100", "unité": "g"},
+            {"nom": "citron vert", "quantité": "2", "unité": ""}
+        ],
+        "Note": "Authentique et parfumé"
+    },
+    {
+        "Recette": "Salade César rapide",
+        "Type de plat": "Plats",
+        "Origine": "Cuisine américaine",
+        "Catégorie": "Volaille",
+        "Nombre de personnes": 4,
+        "Temps de préparation": 15,
+        "Difficulté": "Rapide",
+        "Saison": ["Toutes saisons"],
+        "Préparation": [
+            "Faire griller le poulet et le découper en lamelles.",
+            "Laver et essorer la salade romaine.",
+            "Préparer la sauce César maison ou utiliser du prêt.",
+            "Faire griller les croûtons.",
+            "Assembler la salade avec poulet et croûtons.",
+            "Râper le parmesan par-dessus.",
+            "Servir immédiatement."
+        ],
+        "Ingrédients": [
+            {"nom": "escalopes de poulet", "quantité": "400", "unité": "g"},
+            {"nom": "salade romaine", "quantité": "2", "unité": ""},
+            {"nom": "pain de mie", "quantité": "4", "unité": "tranches"},
+            {"nom": "parmesan", "quantité": "100", "unité": "g"},
+            {"nom": "sauce César", "quantité": "100", "unité": "ml"},
+            {"nom": "huile d'olive", "quantité": "2", "unité": "cuillères à soupe"}
+        ],
+        "Note": "Parfait pour un déjeuner rapide"
+    },
+    {
+        "Recette": "Risotto aux champignons",
+        "Type de plat": "Plats",
+        "Origine": "Cuisine italienne",
+        "Catégorie": "Végétarien",
+        "Nombre de personnes": 4,
+        "Temps de préparation": 35,
+        "Difficulté": "Normal",
+        "Saison": ["Automne", "Hiver"],
+        "Préparation": [
+            "Faire chauffer le bouillon dans une casserole.",
+            "Faire revenir l'oignon émincé dans du beurre.",
+            "Ajouter le riz et nacrer pendant 2 minutes.",
+            "Verser le vin blanc et laisser absorber.",
+            "Ajouter le bouillon louche par louche en remuant.",
+            "Incorporer les champignons sautés en fin de cuisson.",
+            "Terminer avec beurre et parmesan."
+        ],
+        "Ingrédients": [
+            {"nom": "riz arborio", "quantité": "320", "unité": "g"},
+            {"nom": "champignons de Paris", "quantité": "300", "unité": "g"},
+            {"nom": "bouillon de légumes", "quantité": "1", "unité": "litre"},
+            {"nom": "oignon", "quantité": "1", "unité": ""},
+            {"nom": "vin blanc", "quantité": "150", "unité": "ml"},
+            {"nom": "beurre", "quantité": "80", "unité": "g"},
+            {"nom": "parmesan râpé", "quantité": "80", "unité": "g"}
+        ],
+        "Note": "Remuer constamment pour un risotto crémeux"
+    },
+    {
+        "Recette": "Couscous royal",
+        "Type de plat": "Plats",
+        "Origine": "Cuisine du Maghreb",
+        "Catégorie": "Viande rouge",
+        "Nombre de personnes": 6,
+        "Temps de préparation": 90,
+        "Difficulté": "Élaboré",
+        "Saison": ["Toutes saisons"],
+        "Préparation": [
+            "Faire revenir les viandes dans l'huile.",
+            "Ajouter oignons, épices et faire cuire 10 minutes.",
+            "Couvrir d'eau, ajouter bouillon cube et laisser mijoter 1h.",
+            "Préparer les légumes : courgettes, carottes, navets.",
+            "Ajouter légumes au pot, cuire 20 minutes supplémentaires.",
+            "Préparer la semoule selon instructions du paquet.",
+            "Servir avec harissa à côté."
+        ],
+        "Ingrédients": [
+            {"nom": "épaule d'agneau", "quantité": "500", "unité": "g"},
+            {"nom": "escalopes de poulet", "quantité": "400", "unité": "g"},
+            {"nom": "courgettes", "quantité": "2", "unité": ""},
+            {"nom": "carottes", "quantité": "3", "unité": ""},
+            {"nom": "navets", "quantité": "2", "unité": ""},
+            {"nom": "semoule de couscous", "quantité": "500", "unité": "g"},
+            {"nom": "ras el hanout", "quantité": "2", "unité": "cuillères à soupe"},
+            {"nom": "bouillon cube", "quantité": "2", "unité": ""},
+            {"nom": "harissa", "quantité": "1", "unité": "tube"}
+        ],
+        "Note": "Plat traditionnel pour les grandes occasions"
+    },
+    {
+        "Recette": "Poke bowl saumon",
+        "Type de plat": "Plats",
+        "Origine": "Cuisine asiatique",
+        "Catégorie": "Poisson",
+        "Nombre de personnes": 4,
+        "Temps de préparation": 20,
+        "Difficulté": "Rapide",
+        "Saison": ["Printemps", "Été"],
+        "Préparation": [
+            "Cuire le riz et le laisser refroidir.",
+            "Découper le saumon en cubes et mariner avec sauce soja.",
+            "Préparer les légumes : concombre, avocat, radis.",
+            "Faire cuire l'edamame si surgelé.",
+            "Assembler les bowls avec riz, saumon et légumes.",
+            "Décorer avec graines de sésame et algues.",
+            "Servir avec wasabi et gingembre."
+        ],
+        "Ingrédients": [
+            {"nom": "saumon sashimi", "quantité": "400", "unité": "g"},
+            {"nom": "riz à sushi", "quantité": "300", "unité": "g"},
+            {"nom": "avocat", "quantité": "2", "unité": ""},
+            {"nom": "concombre", "quantité": "1", "unité": ""},
+            {"nom": "edamame", "quantité": "150", "unité": "g"},
+            {"nom": "sauce soja", "quantité": "3", "unité": "cuillères à soupe"},
+            {"nom": "graines de sésame", "quantité": "2", "unité": "cuillères à soupe"},
+            {"nom": "algues wakame", "quantité": "1", "unité": "sachet"}
+        ],
+        "Note": "Frais et équilibré, parfait l'été"
+    }
+]
+
+def get_recettes_test():
+    """Retourne la liste des recettes de test"""
+    return recettes_test
+
+def get_recettes_par_categorie(categorie):
+    """Retourne les recettes d'une catégorie donnée"""
+    return [r for r in recettes_test if r.get('Catégorie') == categorie]
+
+def get_recettes_par_origine(origine):
+    """Retourne les recettes d'une origine donnée"""
+    return [r for r in recettes_test if r.get('Origine') == origine]
+
+def get_recettes_par_difficulte(difficulte):
+    """Retourne les recettes d'une difficulté donnée"""
+    return [r for r in recettes_test if r.get('Difficulté') == difficulte]
+
+def get_recettes_rapides():
+    """Retourne toutes les recettes rapides (≤ 30 min)"""
+    return [r for r in recettes_test if r.get('Temps de préparation', 0) <= 30]
+
+def get_plats_principaux():
+    """Retourne uniquement les plats principaux"""
+    return [r for r in recettes_test if r.get('Type de plat') == 'Plats']

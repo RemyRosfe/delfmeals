@@ -1,0 +1,93 @@
+{
+  "nom": "Dahl de lentilles corail et pois chiche",
+  "type_plat": "Plats",
+  "origine": "",
+  "categorie": "Végétarien",
+  "nb_personnes": 5,
+  "temps_preparation": 20,
+  "difficulte": "Normal",
+  "saisons": [
+    "Toutes saisons"
+  ],
+  "ingredients": [
+    {
+      "nom": "oignon",
+      "quantité": "1",
+      "unité": "petit"
+    },
+    {
+      "nom": "gousse d’ail",
+      "quantité": "1",
+      "unité": ""
+    },
+    {
+      "nom": "huile",
+      "quantité": "",
+      "unité": ""
+    },
+    {
+      "nom": "lentilles corail",
+      "quantité": "250",
+      "unité": "g"
+    },
+    {
+      "nom": "cumin",
+      "quantité": "1-2",
+      "unité": "cc"
+    },
+    {
+      "nom": "curry",
+      "quantité": "1-2",
+      "unité": "cc"
+    },
+    {
+      "nom": "sel",
+      "quantité": "",
+      "unité": ""
+    },
+    {
+      "nom": "poivre",
+      "quantité": "",
+      "unité": ""
+    },
+    {
+      "nom": "eau",
+      "quantité": "",
+      "unité": ""
+    },
+    {
+      "nom": "lait",
+      "quantité": "",
+      "unité": ""
+    },
+    {
+      "nom": "pulpe de tomate",
+      "quantité": "",
+      "unité": ""
+    },
+    {
+      "nom": "riz",
+      "quantité": "",
+      "unité": ""
+    },
+    {
+      "nom": "pois chiches cuits",
+      "quantité": "1",
+      "unité": "boite"
+    },
+    {
+      "nom": "coriandre fraiche ciselée",
+      "quantité": "",
+      "unité": ""
+    }
+  ],
+  "preparation": [
+    "faire revenir dans l’huile un petit oignon et une gousse d’ail hachés",
+    "verser 250 g de lentilles corail, ajouter 1 à 2 cc de Cumin, 1 à 2 cc de Curry, sel et poivre, et faire revenir une ou 2 minutes (épices à ajuster en fonction des gouts)",
+    "ajouter 2 fois le volume d’eau + 2 fois le volume de lait+ pulpe de tomate, et faire mijoter à feu doux environ 20 mn en remuant de temps en temps (rajouter de l’eau si nécessaire). Les lentilles doivent être fondantes (cela forme une sorte de purée)",
+    "En parallèle, faire cuire le riz dans une autre casserole",
+    "Ajouter une boite de pois chiches cuits (environ 200g), faire revenir une ou 2 minutes",
+    "Servir avec le riz et de la coriandre fraiche ciselée (ou du persil)"
+  ],
+  "notes": ""
+}

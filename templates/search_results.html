@@ -1,0 +1,127 @@
+{% extends "base.html" %}
+
+{% block title %}Résultats de recherche - DelfMeals{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <h2>🔍 Résultats de recherche</h2>
+            
+            {% if query %}
+            <p class="text-muted">
+                Recherche pour : <strong>"{{ query }}"</strong>
+                <span class="badge bg-primary">{{ results|length }} résultat{{ 's' if results|length != 1 else '' }}</span>
+            </p>
+            {% endif %}
+            
+            {% if results %}
+            <div class="row">
+                {% for recette in results %}
+                <div class="col-md-6 col-lg-4 col-xl-3 mb-3">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ recette['Recette'] }}</h5>
+                            <div class="d-flex justify-content-between text-muted small mb-2">
+                                <span>{{ recette['Catégorie'] }}</span>
+                                <span>{{ format_temps(recette['Temps de préparation']) }}</span>
+                            </div>
+                            <p class="card-text text-muted small">
+                                <span class="badge bg-secondary">{{ recette['Difficulté'] }}</span>
+                                {% if recette.get('Origine') %}
+                                    <span class="badge bg-info">{{ recette['Origine'] }}</span>
+                                {% endif %}
+                            </p>
+                            {% if recette.get('Note') %}
+                            <p class="card-text small">
+                                {{ recette['Note'][:100] }}{% if recette['Note']|length > 100 %}...{% endif %}
+                            </p>
+                            {% endif %}
+                        </div>
+                        <div class="card-footer bg-transparent">
+                            <div class="d-flex justify-content-between">
+                                <a href="{{ url_for('recettes.detail_recette', recette_id=recette.id) }}" 
+                                   class="btn btn-sm btn-primary">
+                                    👁️ Voir
+                                </a>
+                                <a href="{{ url_for('recettes.edit_recette', recette_id=recette.id) }}" 
+                                   class="btn btn-sm btn-outline-secondary">
+                                    ✏️ Modifier
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            
+            <!-- Pagination si nécessaire -->
+            {% if results|length >= 20 %}
+            <nav aria-label="Navigation des résultats">
+                <ul class="pagination justify-content-center">
+                    <!-- Pagination basique - peut être améliorée -->
+                    <li class="page-item disabled">
+                        <span class="page-link">Plus de résultats disponibles dans la liste complète des recettes</span>
+                    </li>
+                </ul>
+            </nav>
+            {% endif %}
+            
+            {% else %}
+            <div class="text-center py-5">
+                <div class="text-muted">
+                    <svg width="64" height="64" fill="currentColor" class="mb-3 opacity-50">
+                        <use href="#icon-search-empty"/>
+                    </svg>
+                    <h4>Aucun résultat trouvé</h4>
+                    {% if query %}
+                    <p>Aucune recette ne correspond à "{{ query }}"</p>
+                    <div class="mt-3">
+                        <p>Suggestions :</p>
+                        <ul class="list-unstyled">
+                            <li>• Vérifiez l'orthographe</li>
+                            <li>• Essayez des mots-clés plus généraux</li>
+                            <li>• Recherchez par catégorie (ex: "végétarien", "poisson")</li>
+                        </ul>
+                    </div>
+                    {% else %}
+                    <p>Saisissez un terme de recherche pour commencer</p>
+                    {% endif %}
+                </div>
+                
+                <div class="mt-4">
+                    <a href="{{ url_for('recettes.list_recettes') }}" class="btn btn-primary">
+                        📚 Parcourir toutes les recettes
+                    </a>
+                    <a href="{{ url_for('recettes.add_recette') }}" class="btn btn-outline-success">
+                        ➕ Ajouter une recette
+                    </a>
+                </div>
+            </div>
+            {% endif %}
+            
+            <!-- Liens d'action -->
+            <div class="mt-4 text-center">
+                <a href="{{ url_for('main.index') }}" class="btn btn-secondary">
+                    🏠 Retour à l'accueil
+                </a>
+                {% if results %}
+                <a href="{{ url_for('recettes.list_recettes') }}" class="btn btn-outline-primary">
+                    📋 Voir toutes les recettes
+                </a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- SVG pour l'icône de recherche vide -->
+<svg style="display: none;">
+    <defs>
+        <symbol id="icon-search-empty" viewBox="0 0 24 24">
+            <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+            <path d="M12 12h-2v2h-2v-2H6V10h2V8h2v2h2v2z" opacity=".3"/>
+        </symbol>
+    </defs>
+</svg>
+{% endblock %}

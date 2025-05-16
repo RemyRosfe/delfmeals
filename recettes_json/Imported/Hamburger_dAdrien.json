@@ -1,0 +1,87 @@
+{
+  "nom": "Hamburger d’Adrien",
+  "type_plat": "Plats",
+  "origine": "",
+  "categorie": "Viande rouge",
+  "nb_personnes": 4,
+  "temps_preparation": "10 min",
+  "difficulte": "Facile",
+  "saisons": [
+    "Toutes saisons"
+  ],
+  "ingredients": [
+    {
+      "nom": "steaks hachés",
+      "quantité": "4",
+      "unité": ""
+    },
+    {
+      "nom": "pains à hamburger",
+      "quantité": "4",
+      "unité": ""
+    },
+    {
+      "nom": "moutarde",
+      "quantité": "4",
+      "unité": "cuil. à café"
+    },
+    {
+      "nom": "ketchup",
+      "quantité": "4",
+      "unité": "cuil. à café"
+    },
+    {
+      "nom": "bacon",
+      "quantité": "4",
+      "unité": "tranches"
+    },
+    {
+      "nom": "ciboulette ciselée surgelée",
+      "quantité": "2",
+      "unité": "cuil. à soupe"
+    },
+    {
+      "nom": "fromage à hamburger",
+      "quantité": "4",
+      "unité": "tranches"
+    },
+    {
+      "nom": "gruyère râpé",
+      "quantité": "4",
+      "unité": "poignées"
+    },
+    {
+      "nom": "tomates",
+      "quantité": "2",
+      "unité": ""
+    },
+    {
+      "nom": "oignon",
+      "quantité": "1",
+      "unité": ""
+    },
+    {
+      "nom": "feuilles de laitue",
+      "quantité": "4",
+      "unité": ""
+    },
+    {
+      "nom": "beurre pour la poêle",
+      "quantité": "1",
+      "unité": "noisette"
+    },
+    {
+      "nom": "sel et poivre",
+      "quantité": "",
+      "unité": ""
+    }
+  ],
+  "preparation": [
+    "Préchauffez le four à 180 °C (th. 6). Dans une poêle, faites chauffer le beurre. Ajoutez les steaks et laissez cuire 6 min environ en les retournant régulièrement. Salez et poivrez.",
+    "Pendant ce temps, coupez les pains en deux et badigeonnez le chapeau de moutarde et la base de ketchup. Une fois cuits, déposez les steaks sur le pain recouvert de ketchup.",
+    "Dans la même poêle, faites griller le bacon jusqu’à ce qu’il devienne croustillant. Puis ajoutez successivement, sur les steaks, la ciboulette, le fromage à hamburger, le bacon et le gruyère râpé. Recouvrez le tout avec l’autre moitié de pain pour former le hamburger.",
+    "Déposez les 4 hamburgers sur la plaque du four recouverte d’aluminium et mettez au four 10 min environ. Pendant ce temps, lavez et coupez les tomates en rondelles. Épluchez et coupez l’oignon en fines rondelles.",
+    "Répartissez les hamburgers dans 4 assiettes, ajoutez l’oignon, les tomates et la laitue sur le bord de chaque assiette. Servez illico presto."
+  ],
+  "notes": "POUR ALLER PLUS VITE: Faites griller le pain à hamburger au grille-pain et supprimez le gruyère râpé. Pour que le fromage à hamburger fonde, posez-le directement sur les steaks à la sortie de la poêle. LE PETIT + DE CYRIL: Pour un goût plus relevé, mélangez votre viande hachée avec 1 pincée de piment d’Espelette et 2 pincées de paprika en poudre. Reformez ensuite 4 steaks."
+}

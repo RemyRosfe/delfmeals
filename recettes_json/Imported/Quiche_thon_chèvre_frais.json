@@ -1,0 +1,79 @@
+{
+  "nom": "Quiche thon, chèvre frais",
+  "type_plat": "Entrée",
+  "origine": "",
+  "categorie": "Poisson",
+  "nb_personnes": 6,
+  "temps_preparation": 35,
+  "difficulte": "Facile",
+  "saisons": [
+    "Toutes saisons"
+  ],
+  "ingredients": [
+    {
+      "nom": "pâte brisée pur beurre toute prête",
+      "quantité": "1",
+      "unité": ""
+    },
+    {
+      "nom": "olives vertes dénoyautées",
+      "quantité": "150",
+      "unité": "g"
+    },
+    {
+      "nom": "thon à l’huile d’olive",
+      "quantité": "250",
+      "unité": "g"
+    },
+    {
+      "nom": "chèvre frais",
+      "quantité": "100",
+      "unité": "g"
+    },
+    {
+      "nom": "œufs",
+      "quantité": "4",
+      "unité": ""
+    },
+    {
+      "nom": "fromage blanc",
+      "quantité": "200",
+      "unité": "g"
+    },
+    {
+      "nom": "crème liquide",
+      "quantité": "10",
+      "unité": "cl"
+    },
+    {
+      "nom": "parmesan râpé",
+      "quantité": "150",
+      "unité": "g"
+    },
+    {
+      "nom": "pistaches",
+      "quantité": "1",
+      "unité": "poignée"
+    },
+    {
+      "nom": "ciboulette ciselée surgelée",
+      "quantité": "3",
+      "unité": "cuil. à soupe"
+    },
+    {
+      "nom": "sel et poivre",
+      "quantité": "",
+      "unité": ""
+    },
+    {
+      "nom": "beurre pour le moule",
+      "quantité": "1",
+      "unité": "noisette"
+    }
+  ],
+  "preparation": [
+    "Préchauffez le four 200 °C (th. 6-7). Étalez la pâte dans un moule à tarte beurré. Piquez le fond à l’aide d’une fourchette et enfournez 10 min environ pour précuire la pâte. Coupez les olives en morceaux. Égouttez le thon puis, dans un bol, écrasez-le avec le chèvre frais à l’aide d’une fourchette.",
+    "Dans un saladier, battez les œufs en omelette. Ajoutez le thon au chèvre, le fromage blanc, la crème liquide, les deux tiers du parmesan, les olives, les pistaches et la ciboulette en mélangeant bien entre chaque ingrédient. Salez et poivrez. Mélangez à nouveau. Versez la préparation au thon sur le fond de tarte précuit. Saupoudrez le dessus avec le reste de parmesan. Mettez au four 35 min environ."
+  ],
+  "notes": "POUR ALLER PLUS VITE: Laissez les olives entières. LE COUP DE POUCE: Vous pouvez utiliser du thon au naturel. LE PETIT + DE CYRIL: Si votre quiche a tendance à dorer trop rapidement, couvrez-la d’une feuille d’aluminium en cours de cuisson et baissez la température du four à 180 °C (th. 6)."
+}

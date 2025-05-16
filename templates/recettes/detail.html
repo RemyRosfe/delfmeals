@@ -1,0 +1,218 @@
+{% extends "base.html" %}
+
+{% block title %}{{ recette['Recette'] }} - DelfMeals{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-8">
+        <!-- En-tête de la recette -->
+        <div class="d-flex justify-content-between align-items-start mb-4">
+            <div>
+                <h1>{{ recette['Recette'] }}</h1>
+                <div class="text-muted mb-2">
+                    <span class="badge bg-primary me-2">{{ recette['Catégorie'] }}</span>
+                    <span class="badge bg-secondary me-2">{{ recette['Difficulté'] }}</span>
+                    {% for saison in recette['Saison'] %}
+                    <span class="badge bg-info me-1">{{ saison }}</span>
+                    {% endfor %}
+                </div>
+                {% if recette['Origine'] %}
+                <p class="text-muted mb-0">
+                    <em>{{ recette['Origine'] }}</em>
+                </p>
+                {% endif %}
+            </div>
+            
+            <!-- Actions -->
+            <div class="btn-group">
+                <a href="{{ url_for('recettes.edit_recette', recette_id=recette_id|default(1)) }}" 
+                   class="btn btn-outline-warning">
+                    ✏️ Modifier
+                </a>
+                <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" 
+                        data-bs-target="#deleteModal">
+                    🗑️ Supprimer
+                </button>
+            </div>
+        </div>
+
+        <!-- Informations générales -->
+        <div class="row mb-4">
+            <div class="col-md-3">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h5 class="card-title">⏱️</h5>
+                        <p class="card-text">
+                            <strong>{{ format_temps(recette['Temps de préparation']) }}</strong><br>
+                            <small class="text-muted">Préparation</small>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h5 class="card-title">👥</h5>
+                        <p class="card-text">
+                            <strong>{{ nb_personnes_ajuste or recette['Nombre de personnes'] }} personnes</strong><br>
+                            <small class="text-muted">Pour</small>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h5 class="card-title">📊</h5>
+                        <p class="card-text">
+                            <strong>{{ recette['Difficulté'] }}</strong><br>
+                            <small class="text-muted">Niveau</small>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h5 class="card-title">🍽️</h5>
+                        <p class="card-text">
+                            <strong>{{ recette['Type de plat'] }}</strong><br>
+                            <small class="text-muted">Type</small>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Note personnelle -->
+        {% if recette['Note'] %}
+        <div class="alert alert-info">
+            <h6 class="alert-heading">💡 Note personnelle :</h6>
+            {{ recette['Note'] }}
+        </div>
+        {% endif %}
+    </div>
+
+    <!-- Ajustement du nombre de personnes -->
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">🔢 Ajuster les quantités</h5>
+            </div>
+            <div class="card-body">
+                <form method="GET" action="{{ url_for('recettes.detail_recette', recette_id=recette_id|default(1)) }}">
+                    <div class="mb-3">
+                        <label for="personnes" class="form-label">Nombre de personnes :</label>
+                        <div class="input-group">
+                            <input type="number" class="form-control" name="personnes" id="personnes" 
+                                   value="{{ nb_personnes_ajuste or recette['Nombre de personnes'] }}" 
+                                   min="1" max="20">
+                            <button class="btn btn-outline-primary" type="submit">Ajuster</button>
+                        </div>
+                    </div>
+                </form>
+                {% if nb_personnes_ajuste and nb_personnes_ajuste != recette['Nombre de personnes'] %}
+                <div class="alert alert-success text-center">
+                    <small>Quantités ajustées pour {{ nb_personnes_ajuste }} personnes<br>
+                    <em>(original: {{ recette['Nombre de personnes'] }} personnes)</em></small>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <!-- Ingrédients -->
+    <div class="col-md-6">
+        <div class="card h-100">
+            <div class="card-header">
+                <h5 class="mb-0">🛒 Ingrédients</h5>
+            </div>
+            <div class="card-body">
+                <ul class="ingredient-list">
+                    {% for ingredient in recette['Ingrédients'] %}
+                    <li>
+                        {% if ingredient['quantité'] %}
+                            {% if ingredient['unité'] %}
+                                {% if ingredient['unité'] in ['pièces', 'pièce', 'tranches', 'tranche'] %}
+                                    <strong>{{ ingredient['quantité'] }} {{ ingredient['nom'] }}</strong>
+                                {% else %}
+                                    <strong>{{ ingredient['quantité'] }} {{ ingredient['unité'] }}</strong> de {{ ingredient['nom'] }}
+                                {% endif %}
+                            {% else %}
+                                <strong>{{ ingredient['quantité'] }}</strong> {{ ingredient['nom'] }}
+                            {% endif %}
+                        {% else %}
+                            {{ ingredient['nom'] }}
+                        {% endif %}
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Préparation -->
+    <div class="col-md-6">
+        <div class="card h-100">
+            <div class="card-header">
+                <h5 class="mb-0">👨‍🍳 Préparation</h5>
+            </div>
+            <div class="card-body">
+                <ol class="preparation-steps">
+                    {% for etape in recette['Préparation'] %}
+                    <li>{{ etape }}</li>
+                    {% endfor %}
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Navigation -->
+<div class="mt-4">
+    <a href="{{ url_for('recettes.list_recettes') }}" class="btn btn-secondary">
+        ← Retour aux recettes
+    </a>
+</div>
+
+<!-- Modal de confirmation de suppression -->
+<div class="modal fade" id="deleteModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Confirmer la suppression</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                Êtes-vous sûr(e) de vouloir supprimer la recette "<strong>{{ recette['Recette'] }}</strong>" ?
+                <br><small class="text-muted">Cette action est irréversible.</small>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                <form method="POST" action="{{ url_for('recettes.delete_recette', recette_id=recette_id|default(1)) }}" 
+                      style="display: inline;">
+                    <button type="submit" class="btn btn-danger">Supprimer</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+// Auto-focus sur le champ nombre de personnes
+document.addEventListener('DOMContentLoaded', function() {
+    const input = document.getElementById('personnes');
+    if (input) {
+        input.addEventListener('change', function() {
+            if (this.value < 1) this.value = 1;
+            if (this.value > 20) this.value = 20;
+        });
+    }
+});
+</script>
+{% endblock %}

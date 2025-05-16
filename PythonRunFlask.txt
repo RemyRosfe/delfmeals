@@ -1,0 +1,3 @@
+cmd
+cd "C:\Users\Laura\Desktop\delfmeals"
+python run_flask.py

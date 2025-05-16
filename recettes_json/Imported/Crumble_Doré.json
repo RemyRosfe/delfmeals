@@ -1,0 +1,50 @@
+{
+  "nom": "Crumble Doré",
+  "type_plat": "Dessert",
+  "origine": "",
+  "categorie": "Dessert",
+  "nb_personnes": 6,
+  "temps_preparation": "30 min",
+  "difficulte": "Normal",
+  "saisons": [
+    "Toutes saisons"
+  ],
+  "ingredients": [
+    {
+      "nom": "pommes",
+      "quantité": "6",
+      "unité": "belles"
+    },
+    {
+      "nom": "sucre vanillé",
+      "quantité": "1",
+      "unité": "sachet"
+    },
+    {
+      "nom": "cannelle en poudre",
+      "quantité": "3",
+      "unité": "pincées"
+    },
+    {
+      "nom": "beurre",
+      "quantité": "125",
+      "unité": "g"
+    },
+    {
+      "nom": "farine",
+      "quantité": "200",
+      "unité": "g"
+    },
+    {
+      "nom": "sucre roux",
+      "quantité": "150",
+      "unité": "g"
+    }
+  ],
+  "preparation": [
+    "Préchauffez le four à 210 °C (th. 7). Épluchez et coupez les pommes en petits morceaux. Répartissez-les dans le fond d’un moule. Saupoudrez-les de sucre vanillé et de cannelle.",
+    "Pour la pâte à crumble, coupez le beurre en morceaux et faites-le ramollir au micro-ondes. Dans un saladier, mélangez bien la farine avec le sucre roux. Puis ajoutez le beurre ramolli. Malaxez la préparation avec les mains puis émiettez-la du bout des doigts pour lui donner une consistance sableuse (comme une grosse semoule).",
+    "Ajoutez-la sur les pommes en une couche régulière. Mettez au four 30 min environ. Servez chaud, tiède ou froid, nature, avec 1 boule de glace à la vanille ou 1 noisette de crème fraîche."
+  ],
+  "notes": "LES COUPS DE POUCE: Pour une pâte à crumble plus originale, troquez les 200 g de farine contre 50 g de poudre de noisettes et 150 g de farine. Pour les plus gourmands, intercalez, entre les pommes et la pâte, 1 barquette de framboises écrasées. LE PETIT + DE CYRIL: Pour une note plus épicée, augmentez les doses de cannelle à 5 ou 6 pincées."
+}

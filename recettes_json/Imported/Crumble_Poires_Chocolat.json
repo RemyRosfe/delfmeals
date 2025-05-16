@@ -1,0 +1,54 @@
+{
+  "nom": "Crumble Poires Chocolat",
+  "type_plat": "Dessert",
+  "origine": "",
+  "categorie": "Dessert",
+  "nb_personnes": 6,
+  "temps_preparation": "35 min",
+  "difficulte": "Facile",
+  "saisons": [
+    "Toutes saisons"
+  ],
+  "ingredients": [
+    {
+      "nom": "poires",
+      "quantité": "6",
+      "unité": ""
+    },
+    {
+      "nom": "pépites de chocolat noir",
+      "quantité": "100",
+      "unité": "g"
+    },
+    {
+      "nom": "beurre",
+      "quantité": "80",
+      "unité": "g"
+    },
+    {
+      "nom": "sucre vanillé",
+      "quantité": "1",
+      "unité": "sachet"
+    },
+    {
+      "nom": "farine",
+      "quantité": "150",
+      "unité": "g"
+    },
+    {
+      "nom": "sucre roux",
+      "quantité": "80",
+      "unité": "g"
+    },
+    {
+      "nom": "sel",
+      "quantité": "1",
+      "unité": "pincée"
+    }
+  ],
+  "preparation": [
+    "Préchauffez le four à 180 °C (th. 6) et faites fondre le beurre au micro-ondes. Épluchez et coupez les poires en petits morceaux et déposez-les dans le fond d’un moule. Saupoudrez-les de sucre vanillé puis ajoutez par-dessus les pépites de chocolat.",
+    "Dans un saladier, mélangez la farine, le sucre roux, le sel et le beurre fondu. Malaxez la préparation avec les mains puis émiettez-la pour lui donner une consistance sableuse. Ajoutez-la sur les fruits en une couche régulière. Mettez au four 35 min environ."
+  ],
+  "notes": "LES COUPS DE POUCE: Pour une version encore plus chocolatée, vous pouvez déposer quelques carrés de chocolat dans le fond du moule avant d’ajouter les poires. Pour des buffets au top, réalisez ce crumble dans 6 ramequins. Idéal pour picorer tout au long du brunch! LE PETIT + DE CYRIL: Servez ce crumble tiède avec 1 boule de glace à la vanille ou 1 noisette de crème fraîche posées sur chaque part."
+}

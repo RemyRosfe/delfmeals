@@ -1,0 +1,77 @@
+{
+  "nom": "Risotto crozets butternut châtaignes",
+  "type_plat": "Plats",
+  "origine": "",
+  "categorie": "Riz",
+  "nb_personnes": 4,
+  "temps_preparation": null,
+  "difficulte": "Normal",
+  "saisons": [
+    "Automne"
+  ],
+  "ingredients": [
+    {
+      "nom": "potiron",
+      "quantité": "400",
+      "unité": "g"
+    },
+    {
+      "nom": "crozets au sarrasin",
+      "quantité": "300",
+      "unité": "g"
+    },
+    {
+      "nom": "champignons",
+      "quantité": "150",
+      "unité": "g"
+    },
+    {
+      "nom": "châtaignes précuites",
+      "quantité": "100",
+      "unité": "g"
+    },
+    {
+      "nom": "échalotes",
+      "quantité": "2",
+      "unité": ""
+    },
+    {
+      "nom": "gousse d’ail",
+      "quantité": "1",
+      "unité": ""
+    },
+    {
+      "nom": "bouillon de légumes",
+      "quantité": "50",
+      "unité": "cl"
+    },
+    {
+      "nom": "vin blanc",
+      "quantité": "10",
+      "unité": "cl"
+    },
+    {
+      "nom": "crème de soja",
+      "quantité": "10",
+      "unité": "cl"
+    },
+    {
+      "nom": "huile d’olive",
+      "quantité": "",
+      "unité": ""
+    },
+    {
+      "nom": "sel et poivre du moulin",
+      "quantité": "",
+      "unité": ""
+    }
+  ],
+  "preparation": [
+    "Épluchez et émincez les échalotes. Rincez les champignons et taillez-les finement. Épluchez, videz et découpez le potiron en cubes de 2 cm.",
+    "Dans une poêle, faites revenir l’ail et les cubes de potiron pendant 15 minutes dans un filet d’huile d’olive. Ajoutez les champignons et poursuivez la cuisson 5 minutes. Ajoutez les châtaignes. Assaisonnez avec sel et poivre et laissez cuire encore 5 minutes en remuant régulièrement.",
+    "Faites chauffer de l’huile d’olive dans une casserole et faites revenir les échalotes jusqu’à ce qu’elles soient translucides (environ 3 minutes).",
+    "Ajoutez les crozets et le vin blanc. Quand le vin est absorbé, versez le bouillon de légumes et laissez mijoter 12-13 minutes en remuant régulièrement.",
+    "Lorsque les crozets ont absorbé le bouillon, ajoutez les légumes, versez la crème de soja et poivrez selon votre goût. Servez le risotto dans une assiette creuse"
+  ],
+  "notes": ""
+}

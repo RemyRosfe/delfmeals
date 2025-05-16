@@ -1,0 +1,42 @@
+{
+  "nom": "Parmentier aux lentilles",
+  "type_plat": "Plats",
+  "origine": "",
+  "categorie": "Végétarien",
+  "nb_personnes": 5,
+  "temps_preparation": null,
+  "difficulte": "Normal",
+  "saisons": [
+    "Toutes saisons"
+  ],
+  "ingredients": [
+    {
+      "nom": "pomme de terre",
+      "quantité": "",
+      "unité": ""
+    },
+    {
+      "nom": "céleri",
+      "quantité": "",
+      "unité": ""
+    },
+    {
+      "nom": "lentilles noires cuisinées",
+      "quantité": "1",
+      "unité": "boîte"
+    },
+    {
+      "nom": "gruyère rapé",
+      "quantité": "",
+      "unité": ""
+    }
+  ],
+  "preparation": [
+    "Faire une purée de pomme de terre (ou mi pomme de terre, mi céleri)",
+    "préchauffer le four et beurrer un moule à gratin",
+    "verser une boîte de lentilles noires cuisinées au fond du plat, et ajouter la purée par-dessus.",
+    "Parsemer de gruyère rapé.",
+    "Mettre au four jusqu’à ce que ce soit doré."
+  ],
+  "notes": ""
+}

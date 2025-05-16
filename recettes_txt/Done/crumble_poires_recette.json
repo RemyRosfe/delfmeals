@@ -1,0 +1,66 @@
+{
+  "Recette": "sRAT L",
+  "Type de plat": "Plats",
+  "Origine": "",
+  "Catégorie": "Végétarien",
+  "Nombre de personnes": 6,
+  "Temps de préparation": 35,
+  "Difficulté": "Normal",
+  "Saison": [
+    "Toutes saisons"
+  ],
+  "Préparation": [],
+  "Ingrédients": [
+    {
+      "nom": "poires",
+      "quantité": "",
+      "unité": ""
+    },
+    {
+      "nom": "pépites de chocolat noir",
+      "quantité": "00",
+      "unité": "g"
+    },
+    {
+      "nom": "beurre me",
+      "quantité": "0",
+      "unité": "g"
+    },
+    {
+      "nom": "sachet de sucre vanillé ES",
+      "quantité": "",
+      "unité": ""
+    },
+    {
+      "nom": "farine se",
+      "quantité": "50",
+      "unité": "g"
+    },
+    {
+      "nom": "sucre roux » La",
+      "quantité": "0",
+      "unité": "g"
+    },
+    {
+      "nom": "pincée de sel ÿ 7”",
+      "quantité": "",
+      "unité": ""
+    },
+    {
+      "nom": "Préchauffez le four à 180 °C (th. 6) et faites LES COUPS DE POULE fl :",
+      "quantité": "",
+      "unité": ""
+    },
+    {
+      "nom": "Dans un saladier, mélangez la farine, le sucre au long du brunch ! Be",
+      "quantité": "",
+      "unité": ""
+    },
+    {
+      "nom": "CS Servez ce crumble tiède avec 1 boule de glace à la vanille ou 1 noisette de crème",
+      "quantité": "",
+      "unité": ""
+    }
+  ],
+  "Note": "Recette numérisée depuis crumble_poires.png"
+}

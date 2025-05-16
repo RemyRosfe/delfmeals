@@ -1,0 +1,35 @@
+Après avoir scanné les recettes, suivre la recette suivante !
+1. CONVERSION EN TXT
+1A. Placez les images dans "recettes_images". Si besoin, conversion PDF en images avec "conversionPDFimages.py" 
+1B. Lancez le script de conversion "ocr_recettes_images.py"
+1C. 📁 Vérifiez les résultats dans recettes_txt/
+
+2. TRAITEMENT DU TEXTE TXT BRUT
+2A. 📝 Aller dans AnythingLLM
+2B. Importer les recettes dans Recettes, puis donner l'instruction suivante
+
+2C. "Tu es un extracteur d'informations de recettes. Ta mission est d'analyser les XX fichiers .txt que j'ai épinglés ("pinned") et d'en extraire les informations dans un format JSON standardisé, suivant les instructions du prompt général."
+
+2D. Copier coller les sorties dans "toutes_mes_recettes.txt"
+
+2. E Corriger manuellement les guilllemets courbes en "", soit ” par " et “ par ". 
+
+3. CONVERSION EN JSON
+3A. Exécuter "final_json_extractor.py", le message suivant s'affiche : 🎉 Extraction terminée!
+✅ XX recettes converties avec succès
+📁 Fichiers créés dans: recettes_json/
+
+4. IMPORTATION DANS LA BASE DE DONNÉES
+4A. Exécuter "safe_importer.py"
+Le message suivant s'affiche :
+🎉 11 recettes importées avec types corrects!
+
+4B. Vérifier l'import avec DBBrowser (modifier origine, vérifier un peu tous les champs, en particulier les numériques)  
+
+4C. Admirer le résultat final dans Flask :
+cmd
+cd "C:\Users\Laura\Desktop\delfmeals"
+python run_flask.py
+http://127.0.0.1:5000/
+
+

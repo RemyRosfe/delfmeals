@@ -1,0 +1,61 @@
+{
+  "nom": "Lasagnes ricotta, épinard et feta",
+  "type_plat": "Plats",
+  "origine": "",
+  "categorie": "Pâtes",
+  "nb_personnes": 6,
+  "temps_preparation": 35,
+  "difficulte": "Normal",
+  "saisons": [
+    "Toutes saisons"
+  ],
+  "ingredients": [
+    {
+      "nom": "Lasagnes prêtes à cuire",
+      "quantité": "",
+      "unité": ""
+    },
+    {
+      "nom": "épinards surgelés hachés",
+      "quantité": "500",
+      "unité": "g"
+    },
+    {
+      "nom": "ricotta",
+      "quantité": "250",
+      "unité": "g"
+    },
+    {
+      "nom": "moutarde",
+      "quantité": "1",
+      "unité": "cuillère à soupe"
+    },
+    {
+      "nom": "féta",
+      "quantité": "",
+      "unité": ""
+    },
+    {
+      "nom": "sauce tomate/basilic",
+      "quantité": "400",
+      "unité": "g"
+    },
+    {
+      "nom": "fromage râpé",
+      "quantité": "",
+      "unité": ""
+    }
+  ],
+  "preparation": [
+    "Préchauffer le four à 200° (term 6/7)",
+    "Faire décongeler les épinards.",
+    "Mélanger les épinards, la ricotta et la moutarde (même si les enfants en mangent, le piquant part à la cuisson).",
+    "Couper le bloc de féta en dés d’1 cm.",
+    "Dans un plat à lasagnes tapisser le fond d’une cuiller à soupe de sauce tomate diluée avec un cuiller à soupe de l’eau pour que les lasagnes ne collent pas.",
+    "faire une couche de lasagnes, une couche de la moitié du mélange épinards/ricotta, une couche de la moitié de la féta, une couche de lasagnes, une couche de la moitié de la sauce tomate/basilic, une couche du reste de féta, une couche du reste du mélange épinards/ricotta, une couche de lasagnes, une couche du reste de la sauce tomate.",
+    "parsemer de fromage rapé",
+    "couvrir d’une feuille de papier aluminium (pour éviter que les lasagnes ne sèchent) puis mettre au four 20 minutes.",
+    "faire gratiner 5/7 minutes en enlevant la feuille de papier alu."
+  ],
+  "notes": "Je n’ajoute ni sel"
+}

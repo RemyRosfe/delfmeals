@@ -1,0 +1,226 @@
+{% extends "base.html" %}
+
+{% block title %}Liste de courses - {{ menu_info.nom }} - DelfMeals{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <!-- En-tête -->
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <div>
+                    <h2>🛒 Liste de courses</h2>
+                    <p class="text-muted mb-0">
+                        Pour le menu : <strong>{{ menu_info.nom }}</strong> 
+                        ({{ menu_info.nb_personnes }} personne{{ 's' if menu_info.nb_personnes > 1 else '' }})
+                    </p>
+                </div>
+                <div class="btn-group">
+                    <a href="{{ url_for('menus.detail_menu', menu_id=menu_info.id) }}" 
+                       class="btn btn-outline-secondary">
+                        ← Retour au menu
+                    </a>
+                    <button onclick="window.print()" class="btn btn-primary">
+                        🖨️ Imprimer
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Options d'ajustement -->
+            <div class="card mb-3">
+                <div class="card-body">
+                    <form method="GET" class="row align-items-center">
+                        <div class="col-auto">
+                            <label for="personnes" class="form-label mb-0">Ajuster pour :</label>
+                        </div>
+                        <div class="col-auto">
+                            <div class="input-group">
+                                <input type="number" id="personnes" name="personnes" 
+                                       class="form-control" value="{{ menu_info.nb_personnes }}" 
+                                       min="1" max="20">
+                                <span class="input-group-text">personne(s)</span>
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <button type="submit" class="btn btn-outline-primary">
+                                🔄 Recalculer
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
+            <!-- Liste de courses par catégories -->
+            {% if ingredients %}
+            <div class="row">
+                {% set categories = {
+                    'Viandes/Poissons': [],
+                    'Légumes/Fruits': [],
+                    'Féculents/Céréales': [],
+                    'Produits laitiers': [],
+                    'Épices/Assaisonnements': [],
+                    'Autres': []
+                } %}
+                
+                <!-- Classification automatique des ingrédients -->
+                {% for nom, details in ingredients.items() %}
+                    {% set nom_lower = nom.lower() %}
+                    {% if 'poulet' in nom_lower or 'viande' in nom_lower or 'lardons' in nom_lower or 'crevettes' in nom_lower or 'poisson' in nom_lower or 'cabillaud' in nom_lower or 'escalope' in nom_lower %}
+                        {{ categories['Viandes/Poissons'].append((nom, details)) or '' }}
+                    {% elif 'légume' in nom_lower or 'poireau' in nom_lower or 'tomate' in nom_lower or 'oignon' in nom_lower or 'concombre' in nom_lower or 'pomme de terre' in nom_lower or 'carotte' in nom_lower or 'courgette' in nom_lower %}
+                        {{ categories['Légumes/Fruits'].append((nom, details)) or '' }}
+                    {% elif 'pâte' in nom_lower or 'riz' in nom_lower or 'quinoa' in nom_lower or 'farine' in nom_lower or 'nouilles' in nom_lower or 'pain' in nom_lower %}
+                        {{ categories['Féculents/Céréales'].append((nom, details)) or '' }}
+                    {% elif 'fromage' in nom_lower or 'crème' in nom_lower or 'feta' in nom_lower or 'beurre' in nom_lower or 'parmesan' in nom_lower or 'yaourt' in nom_lower or 'lait' in nom_lower %}
+                        {{ categories['Produits laitiers'].append((nom, details)) or '' }}
+                    {% elif 'sel' in nom_lower or 'poivre' in nom_lower or 'épice' in nom_lower or 'curry' in nom_lower or 'huile' in nom_lower or 'vinaigre' in nom_lower or 'sauce' in nom_lower or 'herbe' in nom_lower %}
+                        {{ categories['Épices/Assaisonnements'].append((nom, details)) or '' }}
+                    {% else %}
+                        {{ categories['Autres'].append((nom, details)) or '' }}
+                    {% endif %}
+                {% endfor %}
+                
+                <!-- Affichage par catégories -->
+                {% for categorie, items in categories.items() %}
+                    {% if items %}
+                    <div class="col-md-6 mb-4">
+                        <div class="card h-100">
+                            <div class="card-header bg-primary text-white">
+                                <h5 class="mb-0">
+                                    {% if categorie == 'Viandes/Poissons' %}🥩
+                                    {% elif categorie == 'Légumes/Fruits' %}🥕
+                                    {% elif categorie == 'Féculents/Céréales' %}🌾
+                                    {% elif categorie == 'Produits laitiers' %}🥛
+                                    {% elif categorie == 'Épices/Assaisonnements' %}🧂
+                                    {% else %}📦{% endif %}
+                                    {{ categorie }}
+                                </h5>
+                            </div>
+                            <div class="card-body">
+                                <ul class="list-unstyled mb-0">
+                                    {% for nom, details in items|sort %}
+                                    <li class="mb-2">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div>
+                                                <strong>
+                                                    {% if details.quantite and details.quantite > 0 %}
+                                                        {% if details.unite %}
+                                                            {% set unites_sans_de = ['pièces', 'pièce', 'tranches', 'tranche', 'cuillères à soupe', 'cuillères à café'] %}
+                                                            {% if details.unite in unites_sans_de %}
+                                                                {{ details.quantite|round(2) if details.quantite != details.quantite|int else details.quantite|int }} {{ details.unite }} {{ nom }}
+                                                            {% else %}
+                                                                {{ details.quantite|round(2) if details.quantite != details.quantite|int else details.quantite|int }} {{ details.unite }} de {{ nom }}
+                                                            {% endif %}
+                                                        {% else %}
+                                                            {{ details.quantite|round(2) if details.quantite != details.quantite|int else details.quantite|int }} {{ nom }}
+                                                        {% endif %}
+                                                    {% else %}
+                                                        {{ nom }}
+                                                    {% endif %}
+                                                </strong>
+                                            </div>
+                                            <div>
+                                                <input type="checkbox" class="form-check-input" id="check_{{ loop.index }}">
+                                            </div>
+                                        </div>
+                                        {% if details.recettes %}
+                                        <small class="text-muted">
+                                            Utilisé dans : {{ details.recettes|join(', ') }}
+                                        </small>
+                                        {% endif %}
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+            
+            <!-- Résumé -->
+            <div class="card mt-4">
+                <div class="card-body text-center">
+                    <h5>📊 Résumé</h5>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <strong>{{ ingredients|length }}</strong><br>
+                            <small class="text-muted">Ingrédients différents</small>
+                        </div>
+                        <div class="col-md-4">
+                            <strong>{{ menu_info.nb_personnes }}</strong><br>
+                            <small class="text-muted">Personne(s)</small>
+                        </div>
+                        <div class="col-md-4">
+                            <strong>7</strong><br>
+                            <small class="text-muted">Jours de menus</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            {% else %}
+            <!-- Pas d'ingrédients -->
+            <div class="text-center py-5">
+                <div class="text-muted">
+                    <h4>Aucun ingrédient trouvé</h4>
+                    <p>Il semble qu'il y ait un problème avec ce menu.</p>
+                    <a href="{{ url_for('menus.detail_menu', menu_id=menu_info.id) }}" 
+                       class="btn btn-primary">
+                        Retour au menu
+                    </a>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<!-- Style pour l'impression -->
+<style media="print">
+    .btn, .btn-group, .card-header { display: none !important; }
+    .container-fluid { width: 100% !important; }
+    .col-md-8.offset-md-2 { width: 100% !important; }
+    .card { border: 1px solid #000 !important; margin-bottom: 20px !important; }
+    h2, h5 { color: #000 !important; }
+    
+    /* Style pour les checkboxes en impression */
+    .form-check-input {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 16px;
+        height: 16px;
+        border: 2px solid #000;
+        border-radius: 3px;
+        margin-right: 8px;
+    }
+    
+    .form-check-input:checked::after {
+        content: "✓";
+        display: block;
+        text-align: center;
+        color: #000;
+        font-weight: bold;
+        line-height: 12px;
+    }
+</style>
+
+<!-- Script pour persister les checkboxes -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Charger l'état des checkboxes depuis localStorage
+    const checkboxes = document.querySelectorAll('.form-check-input');
+    checkboxes.forEach(checkbox => {
+        const saved = localStorage.getItem(checkbox.id);
+        if (saved === 'true') {
+            checkbox.checked = true;
+        }
+        
+        // Sauvegarder l'état quand on coche/décoche
+        checkbox.addEventListener('change', function() {
+            localStorage.setItem(this.id, this.checked);
+        });
+    });
+});
+</script>
+{% endblock %}

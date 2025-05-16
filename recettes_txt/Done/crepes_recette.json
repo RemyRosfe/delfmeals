@@ -1,0 +1,56 @@
+{
+  "Recette": "LES FAMEUSES CRÊPES",
+  "Type de plat": "Plats",
+  "Origine": "",
+  "Catégorie": "Végétarien",
+  "Nombre de personnes": 12,
+  "Temps de préparation": 2,
+  "Difficulté": "Rapide",
+  "Saison": [
+    "Toutes saisons"
+  ],
+  "Préparation": [],
+  "Ingrédients": [
+    {
+      "nom": "oeufs / 4 oi J",
+      "quantité": "",
+      "unité": ""
+    },
+    {
+      "nom": "farine 12 l",
+      "quantité": "50",
+      "unité": "g"
+    },
+    {
+      "nom": "pincée de sel l",
+      "quantité": "",
+      "unité": ""
+    },
+    {
+      "nom": "lait / 6 5 î",
+      "quantité": "0",
+      "unité": "cl"
+    },
+    {
+      "nom": "cuil. à soupe de sucre en poudre I",
+      "quantité": "",
+      "unité": ""
+    },
+    {
+      "nom": "cuil. à soupe d’huile l",
+      "quantité": "",
+      "unité": ""
+    },
+    {
+      "nom": "les oeufs en omelette, le sucre, 1 cuil. à soupe d’eau de fleur d'oranger, l +",
+      "quantité": "",
+      "unité": ""
+    },
+    {
+      "nom": "Déposez la noisette de beurre sur une feuille une louche dans la poêle beurrée. l =",
+      "quantité": "",
+      "unité": ""
+    }
+  ],
+  "Note": "Recette numérisée depuis crepes.png"
+}

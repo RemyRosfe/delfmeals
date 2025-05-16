@@ -1,0 +1,45 @@
+{
+  "nom": "Omelette du dimanche soir",
+  "type_plat": "Plats",
+  "origine": "",
+  "categorie": "Viande blanche",
+  "nb_personnes": 4,
+  "temps_preparation": 15,
+  "difficulte": "Facile",
+  "saisons": [
+    "Toutes saisons"
+  ],
+  "ingredients": [
+    {
+      "nom": "œufs",
+      "quantité": "10",
+      "unité": ""
+    },
+    {
+      "nom": "lardons",
+      "quantité": "100",
+      "unité": "g"
+    },
+    {
+      "nom": "comté râpé",
+      "quantité": "1",
+      "unité": "poignée"
+    },
+    {
+      "nom": "huile d’olive pour la poêle",
+      "quantité": "3",
+      "unité": "cuil. à soupe"
+    },
+    {
+      "nom": "poivre",
+      "quantité": "",
+      "unité": ""
+    }
+  ],
+  "preparation": [
+    "Épluchez les oignons et coupez-les en fines rondelles. Dans une poêle antiadhésive, faites chauffer l’huile. Ajoutez les oignons et laissez-les revenir 2 min environ. Puis ajoutez les lardons et laissez cuire le tout 7 à 8 min en remuant régulièrement.",
+    "Pendant ce temps, cassez les œufs dans un saladier et battez-les en omelette à l’aide d’une fourchette. Poivrez et ajoutez le comté râpé. Mélangez à nouveau.",
+    "Versez les œufs battus dans la poêle et faites cuire l’omelette 6 à 7 min environ en décollant les bords à l’aide d’une spatule en bois. Pour savoir si elle est prête, soulevez un bord : il doit être doré alors que le dessus de l’omelette reste encore légèrement baveux. Servez illico presto."
+  ],
+  "notes": "POUR ALLER PLUS VITE: Utilisez des oignons émincés et des fines herbes ciselées surgelés. LE COUP DE POUCE: Si vous n’avez pas de lardons, remplacez-les par du jambon ou des saucisses cuites coupées en petits morceaux. LE PETIT + DE CYRIL: N’hésitez pas à composer votre omelette avec les moyens du bord : champignons de Paris, dés de tomates fraîches, cubes de mozza, fines herbes ciselées et pommes de terre."
+}

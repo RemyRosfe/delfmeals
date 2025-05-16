@@ -1,0 +1,201 @@
+{% extends "base.html" %}
+
+{% block title %}Mes Menus - DelfMeals{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h1>🗓️ Mes Menus</h1>
+    <a href="{{ url_for('menus.generate_menu') }}" class="btn btn-primary">
+        ✨ Générer un nouveau menu
+    </a>
+</div>
+
+<!-- Statistiques rapides -->
+<div class="row mb-4">
+    <div class="col-md-4">
+        <div class="card text-center">
+            <div class="card-body">
+                <h2 class="text-primary">{{ menus|length }}</h2>
+                <p class="text-muted mb-0">Menu{{ menus|length|pluralize('', 's') }} sauvegardé{{ menus|length|pluralize('', 's') }}</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card text-center">
+            <div class="card-body">
+                <h2 class="text-success">{{ (menus|length * 14) if menus else 0 }}</h2>
+                <p class="text-muted mb-0">Repas planifiés</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card text-center">
+            <div class="card-body">
+                <h2 class="text-warning">💫</h2>
+                <p class="text-muted mb-0">Organisation facilitée !</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Liste des menus -->
+{% if menus %}
+<div class="row">
+    {% for menu in menus %}
+    <div class="col-lg-6 col-xl-4 mb-4">
+        <div class="card h-100">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h5 class="mb-0">{{ menu.nom }}</h5>
+                <small class="text-muted">{{ menu.date_creation }}</small>
+            </div>
+            
+            <div class="card-body">
+                <!-- Informations du menu -->
+                <div class="mb-3">
+                    <small class="text-muted">
+                        👥 {{ menu.nb_personnes }} personne{{ menu.nb_personnes|pluralize('', 's') }}
+                    </small>
+                </div>
+                
+                <!-- Aperçu du menu (premiers plats) -->
+                {% set sample_menu = menu.to_dict() if menu.to_dict else {} %}
+                {% if sample_menu %}
+                <div class="small">
+                    <strong>Aperçu :</strong>
+                    <ul class="list-unstyled mt-2 ms-3">
+                        {% set shown = 0 %}
+                        {% for jour, repas in sample_menu.items() %}
+                            {% if shown < 3 %}
+                                {% if repas.midi %}
+                                <li>• {{ jour }} midi : {{ repas.midi['Recette'][:30] }}...</li>
+                                {% set shown = shown + 1 %}
+                                {% endif %}
+                                {% if repas.soir and shown < 3 %}
+                                <li>• {{ jour }} soir : {{ repas.soir['Recette'][:30] }}...</li>
+                                {% set shown = shown + 1 %}
+                                {% endif %}
+                            {% endif %}
+                        {% endfor %}
+                        {% if sample_menu|length > 3 %}
+                        <li class="text-muted">... et {{ (sample_menu|length * 2) - 3 }} autres repas</li>
+                        {% endif %}
+                    </ul>
+                </div>
+                {% endif %}
+            </div>
+            
+            <!-- Actions -->
+            <div class="card-footer">
+                <div class="btn-group w-100" role="group">
+                    <a href="{{ url_for('menus.detail_menu', menu_id=menu.id) }}" 
+                       class="btn btn-outline-primary btn-sm">
+                        👁️ Voir
+                    </a>
+                    <a href="{{ url_for('menus.liste_courses', menu_id=menu.id) }}" 
+                       class="btn btn-outline-success btn-sm">
+                        🛒 Courses
+                    </a>
+                    <div class="btn-group" role="group">
+                        <button type="button" class="btn btn-outline-secondary btn-sm dropdown-toggle" 
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                            ⚙️
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <form method="POST" action="{{ url_for('menus.duplicate_menu', menu_id=menu.id) }}" 
+                                      style="display: inline;">
+                                    <button type="submit" class="dropdown-item">
+                                        📋 Dupliquer
+                                    </button>
+                                </form>
+                            </li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li>
+                                <button class="dropdown-item text-danger" 
+                                        onclick="confirmDelete('{{ menu.nom }}', {{ menu.id }})">
+                                    🗑️ Supprimer
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<!-- Pagination si nécessaire -->
+{% if menus|length >= 20 %}
+<div class="text-center mt-4">
+    <a href="#" class="btn btn-outline-primary">Voir plus de menus</a>
+</div>
+{% endif %}
+
+{% else %}
+<!-- État vide -->
+<div class="text-center py-5">
+    <div class="mb-4">
+        <i class="fas fa-calendar-times fa-4x text-muted"></i>
+    </div>
+    <h3>Aucun menu sauvegardé</h3>
+    <p class="text-muted mb-4">
+        Commencez par générer votre premier menu de la semaine !
+    </p>
+    <a href="{{ url_for('menus.generate_menu') }}" class="btn btn-primary btn-lg">
+        ✨ Créer mon premier menu
+    </a>
+</div>
+{% endif %}
+
+<!-- Modal de confirmation de suppression -->
+<div class="modal fade" id="deleteMenuModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Confirmer la suppression</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                Êtes-vous sûr(e) de vouloir supprimer le menu "<strong id="menuToDelete"></strong>" ?
+                <br><small class="text-muted">Cette action est irréversible.</small>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                <form id="deleteMenuForm" method="POST" style="display: inline;">
+                    <button type="submit" class="btn btn-danger">Supprimer</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+function confirmDelete(menuName, menuId) {
+    document.getElementById('menuToDelete').textContent = menuName;
+    document.getElementById('deleteMenuForm').action = 
+        "{{ url_for('menus.delete_menu', menu_id=0) }}".replace('0', menuId);
+    
+    const modal = new bootstrap.Modal(document.getElementById('deleteMenuModal'));
+    modal.show();
+}
+
+// Animation des cartes au survol
+document.addEventListener('DOMContentLoaded', function() {
+    const cards = document.querySelectorAll('.card');
+    cards.forEach(card => {
+        card.addEventListener('mouseenter', function() {
+            this.style.transform = 'scale(1.02)';
+            this.style.transition = 'transform 0.2s ease-in-out';
+        });
+        
+        card.addEventListener('mouseleave', function() {
+            this.style.transform = 'scale(1)';
+        });
+    });
+});
+</script>
+{% endblock %}

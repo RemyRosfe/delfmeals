@@ -1,0 +1,288 @@
+{% extends "base.html" %}
+
+{% block title %}
+  {% if recette %}Modifier la recette{% else %}Ajouter une recette{% endif %} - DelfMeals
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <h2>
+                {% if recette %}
+                    ✏️ Modifier la recette
+                {% else %}
+                    ➕ Ajouter une nouvelle recette
+                {% endif %}
+            </h2>
+            
+            <form method="POST" class="needs-validation" novalidate>
+                <div class="card">
+                    <div class="card-header">
+                        <h5>📝 Informations générales</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="mb-3">
+                                    <label for="nom" class="form-label">Nom de la recette *</label>
+                                    <input type="text" class="form-control" id="nom" name="nom" 
+                                           value="{{ recette['Recette'] if recette else '' }}" required>
+                                    <div class="invalid-feedback">
+                                        Veuillez donner un nom à la recette.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="mb-3">
+                                    <label for="type_plat" class="form-label">Type de plat *</label>
+                                    <select class="form-select" id="type_plat" name="type_plat" required>
+                                        <option value="">Choisir...</option>
+                                        {% for type_plat in types_plats %}
+                                        <option value="{{ type_plat }}" 
+                                                {% if recette and recette['Type de plat'] == type_plat %}selected{% endif %}>
+                                            {{ type_plat }}
+                                        </option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="mb-3">
+                                    <label for="categorie" class="form-label">Catégorie *</label>
+                                    <select class="form-select" id="categorie" name="categorie" required>
+                                        <option value="">Choisir...</option>
+                                        {% for categorie in categories %}
+                                        <option value="{{ categorie }}" 
+                                                {% if recette and recette['Catégorie'] == categorie %}selected{% endif %}>
+                                            {{ categorie }}
+                                        </option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="mb-3">
+                                    <label for="origine" class="form-label">Origine</label>
+                                    <select class="form-select" id="origine" name="origine">
+                                        <option value="">Non spécifiée</option>
+                                        {% for origine in origines %}
+                                        <option value="{{ origine }}" 
+                                                {% if recette and recette.get('Origine') == origine %}selected{% endif %}>
+                                            {{ origine }}
+                                        </option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="mb-3">
+                                    <label for="difficulte" class="form-label">Difficulté *</label>
+                                    <select class="form-select" id="difficulte" name="difficulte" required>
+                                        <option value="">Choisir...</option>
+                                        {% for difficulte in difficultes %}
+                                        <option value="{{ difficulte }}" 
+                                                {% if recette and recette['Difficulté'] == difficulte %}selected{% endif %}>
+                                            {{ difficulte }}
+                                        </option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="nb_personnes" class="form-label">Nombre de personnes</label>
+                                    <input type="number" class="form-control" id="nb_personnes" name="nb_personnes" 
+                                           value="{{ recette['Nombre de personnes'] if recette else 4 }}" min="1" max="20">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="temps_preparation" class="form-label">Temps de préparation (minutes) *</label>
+                                    <input type="number" class="form-control" id="temps_preparation" name="temps_preparation" 
+                                           value="{{ recette['Temps de préparation'] if recette else '' }}" min="1" required>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label class="form-label">Saisons</label>
+                            <div class="row">
+                                {% for saison in saisons %}
+                                <div class="col-md-3">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="saison_{{ loop.index }}" 
+                                               name="saisons" value="{{ saison }}"
+                                               {% if recette and saison in recette.get('Saison', []) %}checked{% endif %}>
+                                        <label class="form-check-label" for="saison_{{ loop.index }}">
+                                            {{ saison }}
+                                        </label>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="note" class="form-label">Note personnelle</label>
+                            <textarea class="form-control" id="note" name="note" rows="2">{{ recette.get('Note', '') if recette else '' }}</textarea>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Ingrédients -->
+                <div class="card mt-3">
+                    <div class="card-header">
+                        <h5>🥕 Ingrédients</h5>
+                    </div>
+                    <div class="card-body">
+                        <div id="ingredients-container">
+                            {% if recette and recette.get('Ingrédients') %}
+                                {% for ingredient in recette['Ingrédients'] %}
+                                <div class="row mb-2 ingredient-row">
+                                    <div class="col-md-5">
+                                        <input type="text" class="form-control" name="ingredient_nom" 
+                                               placeholder="Nom de l'ingrédient" value="{{ ingredient['nom'] }}">
+                                    </div>
+                                    <div class="col-md-3">
+                                        <input type="text" class="form-control" name="ingredient_quantite" 
+                                               placeholder="Quantité" value="{{ ingredient['quantité'] }}">
+                                    </div>
+                                    <div class="col-md-3">
+                                        <input type="text" class="form-control" name="ingredient_unite" 
+                                               placeholder="Unité" value="{{ ingredient['unité'] }}">
+                                    </div>
+                                    <div class="col-md-1">
+                                        <button type="button" class="btn btn-sm btn-outline-danger remove-ingredient">
+                                            ❌
+                                        </button>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            {% else %}
+                                <div class="row mb-2 ingredient-row">
+                                    <div class="col-md-5">
+                                        <input type="text" class="form-control" name="ingredient_nom" 
+                                               placeholder="Nom de l'ingrédient">
+                                    </div>
+                                    <div class="col-md-3">
+                                        <input type="text" class="form-control" name="ingredient_quantite" 
+                                               placeholder="Quantité">
+                                    </div>
+                                    <div class="col-md-3">
+                                        <input type="text" class="form-control" name="ingredient_unite" 
+                                               placeholder="Unité (g, ml, cuillères...)">
+                                    </div>
+                                    <div class="col-md-1">
+                                        <button type="button" class="btn btn-sm btn-outline-danger remove-ingredient">
+                                            ❌
+                                        </button>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        </div>
+                        <button type="button" class="btn btn-sm btn-outline-success" id="add-ingredient">
+                            ➕ Ajouter un ingrédient
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Préparation -->
+                <div class="card mt-3">
+                    <div class="card-header">
+                        <h5>👨‍🍳 Préparation</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <label for="preparation" class="form-label">Étapes de préparation</label>
+                            <textarea class="form-control" id="preparation" name="preparation" rows="10" 
+                                      placeholder="Une étape par ligne...">{% if recette and recette.get('Préparation') %}{{ recette['Préparation']|join('\n') }}{% endif %}</textarea>
+                            <div class="form-text">Une étape par ligne. Vous pouvez numéroter ou pas, c'est à vous !</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Boutons -->
+                <div class="mt-4 text-center">
+                    <a href="{{ url_for('recettes.list_recettes') }}" class="btn btn-secondary">
+                        ❌ Annuler
+                    </a>
+                    <button type="submit" class="btn btn-primary">
+                        {% if recette %}💾 Sauvegarder les modifications{% else %}✨ Créer la recette{% endif %}
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- JavaScript pour gérer les ingrédients dynamiques -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const container = document.getElementById('ingredients-container');
+    const addButton = document.getElementById('add-ingredient');
+    
+    // Ajouter un ingrédient
+    addButton.addEventListener('click', function() {
+        const newRow = document.createElement('div');
+        newRow.className = 'row mb-2 ingredient-row';
+        newRow.innerHTML = `
+            <div class="col-md-5">
+                <input type="text" class="form-control" name="ingredient_nom" 
+                       placeholder="Nom de l'ingrédient">
+            </div>
+            <div class="col-md-3">
+                <input type="text" class="form-control" name="ingredient_quantite" 
+                       placeholder="Quantité">
+            </div>
+            <div class="col-md-3">
+                <input type="text" class="form-control" name="ingredient_unite" 
+                       placeholder="Unité">
+            </div>
+            <div class="col-md-1">
+                <button type="button" class="btn btn-sm btn-outline-danger remove-ingredient">
+                    ❌
+                </button>
+            </div>
+        `;
+        container.appendChild(newRow);
+    });
+    
+    // Supprimer un ingrédient
+    container.addEventListener('click', function(e) {
+        if (e.target.classList.contains('remove-ingredient')) {
+            const row = e.target.closest('.ingredient-row');
+            if (container.children.length > 1) {
+                row.remove();
+            }
+        }
+    });
+    
+    // Validation Bootstrap
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+    (function() {
+        'use strict';
+        window.addEventListener('load', function() {
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.getElementsByClassName('needs-validation');
+            // Loop over them and prevent submission
+            var validation = Array.prototype.filter.call(forms, function(form) {
+                form.addEventListener('submit', function(event) {
+                    if (form.checkValidity() === false) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        }, false);
+    })();
+});
+</script>
+{% endblock %}

@@ -1,0 +1,176 @@
+{% extends "base.html" %}
+
+{% block title %}Accueil - DelfMeals{% endblock %}
+
+{% block content %}
+<!-- Hero section personnalisable -->
+<div class="row">
+    <div class="col-lg-8">
+        <!-- Section héro avec votre image/message -->
+        <div class="jumbotron bg-light p-5 rounded mb-4">
+            <div class="row align-items-center">
+                <div class="col-md-8">
+                    <h1 class="display-4">Bienvenue dans DelfMeals ! 👨‍🍳</h1>
+                    <p class="lead">
+                        Ton générateur de menus personnalisé pour simplifier notre cuisine quotidienne.
+                    </p>
+                    <!-- MESSAGE PERSONNEL ICI - À PERSONNALISER ! -->
+                    <p class="text-muted">
+                        🌟 <em>Plus jamais de galère avec notre liste de plats. Génère des menus équilibrés en un clic !</em>
+                    </p>
+                    <a class="btn btn-primary btn-lg" href="{{ url_for('menus.generate_menu') }}">
+                        ✨ Générer un menu maintenant
+                    </a>
+                </div>
+                <div class="col-md-4 text-center">
+                    <!-- VOTRE IMAGE RIGOLOTE ICI ! -->
+                    <img src="{{ url_for('static', filename='images/binky-sheba.png') }}" 
+     alt="Cuisinons avec amour !" class="img-fluid rounded">
+                    <!-- Image de fallback si pas d'image -->
+                    <svg style="display: none;" width="200" height="150" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="200" height="150" fill="#f8f9fa" stroke="#dee2e6"/>
+                        <text x="50%" y="50%" text-anchor="middle" dy=".3em" font-family="Arial" fill="#6c757d">
+                            🍽️ Ajoutez votre image ici !
+                        </text>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Statistiques -->
+    <div class="col-lg-4">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title mb-0">📊 Votre cuisine en chiffres</h5>
+            </div>
+            <div class="card-body">
+                <div class="row text-center">
+                    <div class="col-6">
+                        <h3 class="text-primary">{{ stats.nb_recettes }}</h3>
+                        <small class="text-muted">Recettes</small>
+                    </div>
+                    <div class="col-6">
+                        <h3 class="text-success">{{ stats.nb_menus }}</h3>
+                        <small class="text-muted">Menus créés</small>
+                    </div>
+                </div>
+                <hr>
+                <div class="small text-muted">
+                    <div class="d-flex justify-content-between">
+                        <span>🥩 Viande:</span>
+                        <span>{{ stats.categories.get('Viande rouge', 0) + stats.categories.get('Volaille', 0) }}</span>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <span>🐟 Poisson:</span>
+                        <span>{{ stats.categories.get('Poisson', 0) }}</span>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <span>🥬 Végétarien:</span>
+                        <span>{{ stats.categories.get('Végétarien', 0) }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Actions rapides -->
+<div class="row mb-4">
+    <div class="col-md-4">
+        <div class="card h-100 text-center">
+            <div class="card-body">
+                <div class="text-primary mb-3">
+                    <svg width="48" height="48" fill="currentColor">
+                        <use href="#icon-recipe"/>
+                    </svg>
+                </div>
+                <h5 class="card-title">Parcourir les recettes</h5>
+                <p class="card-text">Redécouvre toutes tes recettes favorites classées par catégorie.</p>
+                <a href="{{ url_for('recettes.list_recettes') }}" class="btn btn-outline-primary">
+                    Voir les recettes
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-4">
+        <div class="card h-100 text-center">
+            <div class="card-body">
+                <div class="text-success mb-3">
+                    <svg width="48" height="48" fill="currentColor">
+                        <use href="#icon-calendar"/>
+                    </svg>
+                </div>
+                <h5 class="card-title">Gérer tes menus</h5>
+                <p class="card-text">Consulte tes menus sauvegardés et leurs listes de courses.</p>
+                <a href="{{ url_for('menus.list_menus') }}" class="btn btn-outline-success">
+                    Mes menus
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-4">
+        <div class="card h-100 text-center">
+            <div class="card-body">
+                <div class="text-warning mb-3">
+                    <svg width="48" height="48" fill="currentColor">
+                        <use href="#icon-plus"/>
+                    </svg>
+                </div>
+                <h5 class="card-title">Ajouter une recette</h5>
+                <p class="card-text">Enrichis ta collection avec une nouvelle recette maison.</p>
+                <a href="{{ url_for('recettes.add_recette') }}" class="btn btn-outline-warning">
+                    Ajouter
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Recettes récentes -->
+{% if recettes_recentes %}
+<div class="row">
+    <div class="col-12">
+        <h3>🔥 Recettes récentes</h3>
+        <div class="row">
+            {% for recette in recettes_recentes %}
+            <div class="col-md-4 col-lg-2 mb-3">
+                <div class="card h-100">
+                    <div class="card-body text-center">
+                        <h6 class="card-title small">{{ recette['Recette'] }}</h6>
+                        <small class="text-muted">
+                            {{ recette['Catégorie'] }}<br>
+                            {{ format_temps(recette['Temps de préparation']) }}
+                        </small>
+                    </div>
+                    <div class="card-footer p-1">
+                        <a href="{{ url_for('recettes.detail_recette', recette_id=recette.id) }}" 
+                           class="btn btn-sm btn-outline-primary w-100">
+                            Voir
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endif %}
+
+<!-- SVG Icons (vous pouvez les remplacer) -->
+<svg style="display: none;">
+    <defs>
+        <symbol id="icon-recipe" viewBox="0 0 24 24">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+        </symbol>
+        <symbol id="icon-calendar" viewBox="0 0 24 24">
+            <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/>
+        </symbol>
+        <symbol id="icon-plus" viewBox="0 0 24 24">
+            <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
+        </symbol>
+    </defs>
+</svg>
+{% endblock %}

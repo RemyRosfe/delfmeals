@@ -1,0 +1,83 @@
+{
+  "nom": "Chakchouka aux pois chiches et aux œufs",
+  "type_plat": "Plats",
+  "origine": "",
+  "categorie": "Végétarien",
+  "nb_personnes": 4,
+  "temps_preparation": "",
+  "difficulte": "Normal",
+  "saisons": [
+    "Toutes saisons"
+  ],
+  "ingredients": [
+    {
+      "nom": "épices",
+      "quantité": "",
+      "unité": ""
+    },
+    {
+      "nom": "cumin",
+      "quantité": "",
+      "unité": ""
+    },
+    {
+      "nom": "curry",
+      "quantité": "",
+      "unité": ""
+    },
+    {
+      "nom": "paprika",
+      "quantité": "",
+      "unité": ""
+    },
+    {
+      "nom": "gousse d’ail",
+      "quantité": "1",
+      "unité": ""
+    },
+    {
+      "nom": "oignon",
+      "quantité": "1",
+      "unité": ""
+    },
+    {
+      "nom": "huile d’olive",
+      "quantité": "",
+      "unité": ""
+    },
+    {
+      "nom": "boite de pois-chiches égouttées",
+      "quantité": "1",
+      "unité": ""
+    },
+    {
+      "nom": "boite de tomates pelées",
+      "quantité": "1",
+      "unité": ""
+    },
+    {
+      "nom": "eau",
+      "quantité": "",
+      "unité": "un peu"
+    },
+    {
+      "nom": "œufs",
+      "quantité": "4",
+      "unité": ""
+    },
+    {
+      "nom": "coriandre fraiche",
+      "quantité": "",
+      "unité": ""
+    }
+  ],
+  "preparation": [
+    "Dans une poêle, faire revenir des épices pendant 1 mn : cumin, curry, paprika",
+    "Pendant ce temps, émincer une gousse d’ail et un oignon",
+    "Ajouter dans la poêle de l’huile d’olive, faire revenir de l’ail et l’oignon jusqu’à ce qu’ils soient colorés",
+    "Ajouter une boite de pois-chiches égouttées, et une boite de tomates pelées et un peu d’eau, et laisser mijoter 10 mn jusqu’à épaississement",
+    "Avec une cuillère, faire 4 trous dans la préparation, et casser les 4 œufs, un dans chaque espace. Faire cuire à couvert pendant 5 mn",
+    "Ajouter de la coriandre fraiche (facultative)"
+  ],
+  "notes": "Recette complète (45 mn) Faire revenir les oignons, Faire revenir les lentilles corail dans la poêle, puis 3 volumes d’eau et couvrir. Surveiller attentivement et rajouter de l’eau si nécessaire. Une fois les lentilles cuites, continuer comme pour la recette simple."
+}

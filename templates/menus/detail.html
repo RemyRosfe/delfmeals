@@ -1,0 +1,408 @@
+{% extends "base.html" %}
+
+{% block title %}{{ menu_info.nom }} - DelfMeals{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <!-- Colonne principale : Menu -->
+        <div class="col-lg-8">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h2>🗓️ {{ menu_info.nom }}</h2>
+                <div class="btn-group">
+                    <button onclick="window.print()" class="btn btn-primary">
+                        🖨️ Imprimer le menu
+                    </button>
+                    <a href="{{ url_for('menus.duplicate_menu', menu_id=menu_id) }}" 
+                       class="btn btn-outline-primary" onclick="return confirm('Dupliquer ce menu ?')">
+                        📋 Dupliquer
+                    </a>
+                    <a href="{{ url_for('menus.liste_courses', menu_id=menu_id) }}" 
+                       class="btn btn-success">
+                        🛒 Liste de courses
+                    </a>
+                    <button class="btn btn-outline-danger" 
+                            onclick="confirmDelete({{ menu_id }})">
+                        🗑️ Supprimer
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Informations du menu -->
+            <div class="card mb-3 menu-info">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <strong>👥 Nombre de personnes :</strong> {{ menu_info.nb_personnes }}
+                        </div>
+                        <div class="col-md-4">
+                            <strong>📅 Créé le :</strong> {{ menu_info.date_creation }}
+                        </div>
+                        <div class="col-md-4">
+                            <!-- Ajustement des quantités -->
+                            <form method="GET" class="d-inline">
+                                <div class="input-group input-group-sm">
+                                    <input type="number" name="personnes" class="form-control" 
+                                           value="{{ menu_info.nb_personnes }}" min="1" max="20"
+                                           placeholder="Nb personnes">
+                                    <button type="submit" class="btn btn-outline-secondary">
+                                        🔄 Ajuster
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    {% if menu_info.notes %}
+                    <div class="mt-2">
+                        <strong>📝 Notes :</strong> {{ menu_info.notes }}
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+            
+            <!-- Menu hebdomadaire -->
+            <div class="row menu-section">
+                {% for jour, repas in menu.items() %}
+                <div class="col-md-6 col-lg-4 mb-3">
+                    <div class="card h-100">
+                        <div class="card-header bg-primary text-white">
+                            <h5 class="mb-0">{{ jour }}</h5>
+                        </div>
+                        <div class="card-body p-2">
+                            <!-- Midi -->
+                            <div class="mb-3">
+                                <h6 class="text-muted mb-1">🌅 Midi</h6>
+                                {% if repas.midi %}
+                                <div class="card card-body p-2">
+                                    <h6 class="card-title mb-1">
+                                        <a href="#" class="text-decoration-none">
+                                            {{ repas.midi['Recette'] }}
+                                        </a>
+                                    </h6>
+                                    <small class="text-muted">
+                                        {{ repas.midi['Catégorie'] }} • 
+                                        {{ format_temps(repas.midi['Temps de préparation']) }} • 
+                                        {{ repas.midi['Difficulté'] }}
+                                    </small>
+                                </div>
+                                {% else %}
+                                <div class="text-muted small">Pas de plat défini</div>
+                                {% endif %}
+                            </div>
+                            
+                            <!-- Soir -->
+                            <div>
+                                <h6 class="text-muted mb-1">🌙 Soir</h6>
+                                {% if repas.soir %}
+                                <div class="card card-body p-2">
+                                    <h6 class="card-title mb-1">
+                                        <a href="#" class="text-decoration-none">
+                                            {{ repas.soir['Recette'] }}
+                                        </a>
+                                    </h6>
+                                    <small class="text-muted">
+                                        {{ repas.soir['Catégorie'] }} • 
+                                        {{ format_temps(repas.soir['Temps de préparation']) }} • 
+                                        {{ repas.soir['Difficulté'] }}
+                                    </small>
+                                </div>
+                                {% else %}
+                                <div class="text-muted small">Pas de plat défini</div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        
+        <!-- Colonne latérale : Statistiques -->
+        <div class="col-lg-4">
+            <div class="card">
+                <div class="card-header">
+                    <h5>📊 Analyse du menu</h5>
+                </div>
+                <div class="card-body">
+                    {% if rapport %}
+                    <!-- Temps total -->
+                    <div class="mb-3">
+                        <h6>⏱️ Temps de cuisine</h6>
+                        <div class="d-flex justify-content-between">
+                            <span>Total :</span>
+                            <strong>{{ format_temps(rapport.temps_total) }}</strong>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <span>Moyenne/plat :</span>
+                            <strong>{{ format_temps(rapport.temps_moyen|round|int) }}</strong>
+                        </div>
+                    </div>
+                    
+                    <!-- Répartition par catégorie -->
+                    <div class="mb-3">
+                        <h6>🍖 Catégories</h6>
+                        {% for categorie, count in rapport.categories.most_common() %}
+                        <div class="d-flex justify-content-between">
+                            <span>{{ categorie }} :</span>
+                            <span class="badge bg-secondary">{{ count }}</span>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    
+                    <!-- Répartition par difficulté -->
+                    <div class="mb-3">
+                        <h6>⚡ Difficultés</h6>
+                        {% for difficulte, count in rapport.difficultes.most_common() %}
+                        <div class="d-flex justify-content-between">
+                            <span>{{ difficulte }} :</span>
+                            <span class="badge 
+                                {% if difficulte == 'Rapide' %}bg-success
+                                {% elif difficulte == 'Normal' %}bg-warning
+                                {% else %}bg-danger{% endif %}">{{ count }}</span>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    
+                    <!-- Origines culinaires -->
+                    <div class="mb-3">
+                        <h6>🌍 Origines</h6>
+                        {% for origine, count in rapport.origines.most_common(5) %}
+                        <div class="d-flex justify-content-between small">
+                            <span>{{ origine.replace('Cuisine ', '') }} :</span>
+                            <span class="badge bg-info">{{ count }}</span>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    
+                    <!-- Validation des contraintes -->
+                    <div>
+                        <h6>✅ Contraintes</h6>
+                        <div class="small">
+                            {% if rapport and rapport.contraintes_respectees %}
+                                {% for contrainte, respectee in rapport.contraintes_respectees.items() %}
+                                <div class="d-flex justify-content-between">
+                                    <span>{{ contrainte|title }} :</span>
+                                    <span class="badge {% if respectee %}bg-success{% else %}bg-warning{% endif %}">
+                                        {% if respectee %}✓ OK{% else %}⚠ À revoir{% endif %}
+                                    </span>
+                                </div>
+                                {% endfor %}
+                            {% else %}
+                                <div class="text-muted">
+                                    <em>Analyse des contraintes non disponible</em>
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    {% else %}
+                    <p class="text-muted">Analyse non disponible</p>
+                    {% endif %}
+                </div>
+            </div>
+            
+            <!-- Actions rapides -->
+            <div class="card mt-3">
+                <div class="card-header">
+                    <h6>🚀 Actions rapides</h6>
+                </div>
+                <div class="card-body">
+                    <div class="d-grid gap-2">
+                        <a href="{{ url_for('menus.liste_courses', menu_id=menu_id, personnes=menu_info.nb_personnes) }}" 
+                           class="btn btn-success btn-sm">
+                            🛒 Liste de courses
+                        </a>
+                        <a href="{{ url_for('menus.liste_courses', menu_id=menu_id, personnes=menu_info.nb_personnes * 2) }}" 
+                           class="btn btn-outline-success btn-sm">
+                            🛒 Liste pour {{ menu_info.nb_personnes * 2 }} personnes
+                        </a>
+                        <hr class="my-2">
+                        <a href="{{ url_for('menus.generate_menu') }}" 
+                           class="btn btn-primary btn-sm">
+                            ✨ Générer un nouveau menu
+                        </a>
+                        <a href="{{ url_for('menus.list_menus') }}" 
+                           class="btn btn-outline-secondary btn-sm">
+                            📋 Tous mes menus
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal de confirmation pour la suppression -->
+<script>
+function confirmDelete(menuId) {
+    if (confirm('Êtes-vous sûr de vouloir supprimer ce menu ? Cette action est irréversible.')) {
+        // Créer un formulaire pour envoyer la requête POST
+        var form = document.createElement('form');
+        form.method = 'POST';
+        form.action = `/menus/${menuId}/delete`;
+        document.body.appendChild(form);
+        form.submit();
+    }
+}
+</script>
+
+<!-- Style pour l'impression du menu -->
+<style media="print">
+    /* Masquer uniquement les éléments non nécessaires */
+    .btn, .btn-group, nav, .navbar, .sidebar, form, .input-group {
+        display: none !important;
+    }
+    
+    /* Optimiser la mise en page pour l'impression */
+    body {
+        font-size: 11pt !important;
+        line-height: 1.3 !important;
+        color: #000 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+    
+    .container-fluid {
+        width: 100% !important;
+        max-width: none !important;
+        padding: 10px !important;
+        margin: 0 !important;
+    }
+    
+    /* Réorganiser les colonnes pour l'impression */
+    .col-lg-8, .col-lg-4 {
+        width: 100% !important;
+        max-width: 100% !important;
+        float: none !important;
+    }
+    
+    /* Titre du menu */
+    h2 {
+        color: #000 !important;
+        page-break-after: avoid;
+        text-align: center;
+        border-bottom: 2px solid #000;
+        padding-bottom: 10px;
+        margin-bottom: 20px;
+        font-size: 18pt !important;
+    }
+    
+    /* Section informations du menu */
+    .menu-info {
+        border: 2px solid #000 !important;
+        padding: 15px !important;
+        margin-bottom: 20px !important;
+        background-color: #f9f9f9 !important;
+        page-break-after: avoid;
+    }
+    
+    /* Cards du menu */
+    .card {
+        border: 1px solid #000 !important;
+        margin-bottom: 10px !important;
+        box-shadow: none !important;
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+    
+    .card-header {
+        background-color: #e9ecef !important;
+        color: #000 !important;
+        border-bottom: 1px solid #000 !important;
+        font-weight: bold;
+        text-align: center;
+        padding: 8px !important;
+    }
+    
+    .card-body {
+        padding: 8px !important;
+    }
+    
+    /* Gestion des jours de la semaine */
+    .menu-section {
+        clear: both;
+    }
+    
+    .menu-section .col-md-6 {
+        width: 48% !important;
+        float: left !important;
+        margin-right: 2% !important;
+    }
+    
+    .menu-section .col-lg-4 {
+        width: 32% !important;
+        float: left !important;
+        margin-right: 1% !important;
+    }
+    
+    /* Force un saut de page après 6 jours */
+    .menu-section .col-md-6:nth-child(7),
+    .menu-section .col-lg-4:nth-child(7) {
+        page-break-before: always;
+        clear: both;
+    }
+    
+    /* Améliorer le rendu du texte */
+    .text-muted {
+        color: #555 !important;
+    }
+    
+    h6 {
+        font-size: 10pt !important;
+        margin-bottom: 5px !important;
+    }
+    
+    /* Section statistiques - placée après le menu */
+    .col-lg-4 {
+        page-break-before: always;
+        margin-top: 20px;
+    }
+    
+    .col-lg-4 h5 {
+        text-align: center;
+        border-bottom: 1px solid #000;
+        padding-bottom: 5px;
+    }
+    
+    /* Optimisation pour les badges */
+    .badge {
+        background-color: #f8f9fa !important;
+        color: #000 !important;
+        border: 1px solid #000 !important;
+        font-weight: normal !important;
+    }
+    
+    /* Forcer l'affichage de tous les éléments importants */
+    .card-title, .card-text, .d-flex, .mb-3, .mb-2 {
+        display: block !important;
+    }
+    
+    /* Éviter les coupures de mots */
+    .card-title {
+        word-wrap: break-word;
+        hyphens: auto;
+    }
+    
+    /* Pagination */
+    @page {
+        size: A4;
+        margin: 1.5cm;
+        @top-center {
+            content: "Menu de la semaine - " attr(title);
+            font-size: 10pt;
+            color: #666;
+        }
+        @bottom-center {
+            content: "Page " counter(page) " - DelfMeals";
+            font-size: 9pt;
+            color: #666;
+        }
+    }
+    
+    /* Clearfix pour les floats */
+    .row::after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+</style>
+{% endblock %}

@@ -1,0 +1,61 @@
+{
+  "nom": "Parmentier aux haricots rouges et patates douces",
+  "type_plat": "Plats",
+  "origine": "",
+  "categorie": "Végétarien",
+  "nb_personnes": 5,
+  "temps_preparation": null,
+  "difficulte": "Normal",
+  "saisons": [
+    "Toutes saisons"
+  ],
+  "ingredients": [
+    {
+      "nom": "patates douces",
+      "quantité": "800",
+      "unité": "g"
+    },
+    {
+      "nom": "pomme de terre",
+      "quantité": "300",
+      "unité": "g"
+    },
+    {
+      "nom": "lait",
+      "quantité": "",
+      "unité": "un peu"
+    },
+    {
+      "nom": "sel",
+      "quantité": "",
+      "unité": ""
+    },
+    {
+      "nom": "poivre",
+      "quantité": "",
+      "unité": ""
+    },
+    {
+      "nom": "haricots rouges",
+      "quantité": "1",
+      "unité": "boîte"
+    },
+    {
+      "nom": "pulpe de tomate",
+      "quantité": "1",
+      "unité": "boite"
+    },
+    {
+      "nom": "gruyère rapé",
+      "quantité": "",
+      "unité": ""
+    }
+  ],
+  "preparation": [
+    "Faire cuire 800 g de patates douces et 300 gr de pomme de terre. Quand c’est cuit, égoutter, puis réduire en purée, en rajoutant un peu de lait. Salez et poivrez",
+    "pendant ce temps, faire revenir dans une poêle une boîte de haricots rouges, avec une boite de pulpe de tomate. Assaisonnez à votre goût.",
+    "Préchauffer le four et beurre un moule à gratin",
+    "verser la préparation aux haricots au fond du moule, et rajouter la purée dessus. Saupoudrez de gruyère rapé, et mettez au four pour que ça gratine."
+  ],
+  "notes": "beau et super bon"
+}

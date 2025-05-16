@@ -1,0 +1,62 @@
+{
+  "nom": "Chili sin carne",
+  "type_plat": "Plats",
+  "origine": "",
+  "categorie": "Végétarien",
+  "nb_personnes": 4,
+  "temps_preparation": 30,
+  "difficulte": "Facile",
+  "saisons": [
+    "Toutes saisons"
+  ],
+  "ingredients": [
+    {
+      "nom": "oignons",
+      "quantité": "",
+      "unité": ""
+    },
+    {
+      "nom": "gousse d’ail",
+      "quantité": "1",
+      "unité": ""
+    },
+    {
+      "nom": "haricots rouges égouttés",
+      "quantité": "1",
+      "unité": "boite"
+    },
+    {
+      "nom": "pulpe de tomate",
+      "quantité": "2",
+      "unité": "boites"
+    },
+    {
+      "nom": "sel",
+      "quantité": "",
+      "unité": ""
+    },
+    {
+      "nom": "poivre",
+      "quantité": "",
+      "unité": ""
+    },
+    {
+      "nom": "épices à chili",
+      "quantité": "",
+      "unité": ""
+    },
+    {
+      "nom": "riz",
+      "quantité": "",
+      "unité": ""
+    }
+  ],
+  "preparation": [
+    "faire revenir des oignons + 1 gousse d’ail dans une grande poele",
+    "ajouter une boite de haricots rouges égouttés + 2 boites de pulpe de tomate",
+    "ajouter sel -poivre épices à chili et faire revenir une vingtaine de minutes",
+    "pendant ce temps, faire cuire du riz à part",
+    "Rectifier l’assaisonnement et Servir"
+  ],
+  "notes": "Recette simple (30mn)"
+}

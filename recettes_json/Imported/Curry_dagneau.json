@@ -1,0 +1,85 @@
+{
+  "nom": "Curry d’agneau",
+  "type_plat": "Plats",
+  "origine": "",
+  "categorie": "Viande rouge",
+  "nb_personnes": 2,
+  "temps_preparation": 15,
+  "difficulte": "Normal",
+  "saisons": [
+    "Toutes saisons"
+  ],
+  "ingredients": [
+    {
+      "nom": "épaule d’agneau désossée et coupée en dés",
+      "quantité": "300",
+      "unité": "g"
+    },
+    {
+      "nom": "tronçon de gingembre",
+      "quantité": "1",
+      "unité": "de 2 cm"
+    },
+    {
+      "nom": "cumin en poudre",
+      "quantité": "3",
+      "unité": "pincées"
+    },
+    {
+      "nom": "piment d’Espelette",
+      "quantité": "2",
+      "unité": "pincées"
+    },
+    {
+      "nom": "oignon",
+      "quantité": "1",
+      "unité": ""
+    },
+    {
+      "nom": "échalote",
+      "quantité": "1",
+      "unité": ""
+    },
+    {
+      "nom": "gousse d’ail",
+      "quantité": "1",
+      "unité": ""
+    },
+    {
+      "nom": "carottes",
+      "quantité": "2",
+      "unité": "belles"
+    },
+    {
+      "nom": "tomate",
+      "quantité": "1",
+      "unité": ""
+    },
+    {
+      "nom": "curry en poudre",
+      "quantité": "1",
+      "unité": "cuil. à soupe"
+    },
+    {
+      "nom": "raisins secs",
+      "quantité": "1",
+      "unité": "petite poignée"
+    },
+    {
+      "nom": "huile d’olive pour la sauteuse",
+      "quantité": "2",
+      "unité": "cuil. à soupe"
+    },
+    {
+      "nom": "sel et poivre",
+      "quantité": "",
+      "unité": ""
+    }
+  ],
+  "preparation": [
+    "Épluchez le gingembre et râpez-le. Dans un saladier, déposez les dés d’agneau avec le cumin, le gingembre râpé et le piment. Salez et poivrez. Laissez reposer quelques instants.",
+    "Pendant ce temps, épluchez et coupez finement l’oignon et l’échalote. Épluchez l’ail (et ôtez le germe s’il y en a un) ; écrasez-le au presse-ail. Épluchez les carottes et râpez-les finement à l’aide d’un robot ou d’une râpe. Lavez la tomate, coupez-la en deux, ôtez les pépins puis coupez-la en petits dés.",
+    "Dans une sauteuse ou une grande poêle, faites chauffer l’huile à feu moyen. Ajoutez l’échalote, l’oignon, l’ail et le curry et faites revenir le tout 5 min environ en remuant régulièrement. Ajoutez les dés d’agneau et laissez cuire 5 min à nouveau. Puis ajoutez les carottes râpées, la tomate, les raisins secs et 3 cuil. à soupe d’eau. Couvrez et laissez cuire à feu doux pendant 15 min. Mélangez régulièrement et rajoutez un peu d’eau si ça accroche. Servez illico presto avec du riz basmati parsemé de noix de cajou."
+  ],
+  "notes": "LE COUP DE POULE: Pour râper le gingembre, enlevez la peau beige avec un couteau puis râpez-le sur les gros trous d’une râpe. LE PETIT + DE CYRIL: Vous pouvez rajouter des cacahuètes pilées (1 petite poignée) sur le dessus juste avant de servir."
+}

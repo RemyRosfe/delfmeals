@@ -1,0 +1,99 @@
+{
+  "nom": "Moussaka",
+  "type_plat": "Plats",
+  "origine": "",
+  "categorie": "Viande rouge",
+  "nb_personnes": 4,
+  "temps_preparation": 40,
+  "difficulte": "Facile",
+  "saisons": [
+    "Toutes saisons"
+  ],
+  "ingredients": [
+    {
+      "nom": "aubergines",
+      "quantité": "1.2",
+      "unité": "kg"
+    },
+    {
+      "nom": "oignons",
+      "quantité": "2",
+      "unité": "gros"
+    },
+    {
+      "nom": "gousses d’ail",
+      "quantité": "2",
+      "unité": ""
+    },
+    {
+      "nom": "clous de girofle moulus",
+      "quantité": "1",
+      "unité": "pincée"
+    },
+    {
+      "nom": "cannelle",
+      "quantité": "1",
+      "unité": "pincée"
+    },
+    {
+      "nom": "coriandre",
+      "quantité": "1",
+      "unité": "pincée"
+    },
+    {
+      "nom": "viande d’agneau ou de bœuf hachée",
+      "quantité": "250",
+      "unité": "g"
+    },
+    {
+      "nom": "pignons de pin",
+      "quantité": "30",
+      "unité": "g"
+    },
+    {
+      "nom": "concentré de tomate",
+      "quantité": "3",
+      "unité": "cuil. à soupe"
+    },
+    {
+      "nom": "fromage râpé (gruyère ou emmental)",
+      "quantité": "",
+      "unité": ""
+    },
+    {
+      "nom": "huile d’olive",
+      "quantité": "3",
+      "unité": "cuil. à soupe"
+    },
+    {
+      "nom": "sel-poivre",
+      "quantité": "",
+      "unité": ""
+    },
+    {
+      "nom": "lait",
+      "quantité": "1/2",
+      "unité": "l"
+    },
+    {
+      "nom": "farine",
+      "quantité": "3",
+      "unité": "cuil. à soupe"
+    },
+    {
+      "nom": "œuf",
+      "quantité": "1",
+      "unité": ""
+    }
+  ],
+  "preparation": [
+    "Lavez les aubergines, éliminez les pédoncules et coupez-les en fines tranches (1 cm environ) dans la longueur. Salez-les.",
+    "Faites chauffer une poêle ou un gril antiadhésif et huilez très légèrement chaque tranche d’aubergine avec un pinceau. Faites griller les morceaux d’aubergine 1 à 2 minutes sur chaque face, puis réservez-les sur une assiette.",
+    "Épluchez et hachez les oignons et les gousses d’ail, faites-les revenir dans la poêle avec 1 cuillerée d’huile. Salez et ajoutez les épices, puis mélangez avec la viande hachée et continuez la cuisson encore 10 minutes. Incorporez les pignons de pin, remuez et retirez du feu.",
+    "Dans un bol, diluez le concentré de tomate dans 30 cl d’eau. Réservez.",
+    "Préparez la béchamel : faites brunir la farine à sec dans une casserole à fond épais. Mouillez avec le lait en versant doucement et en mélangeant, ajoutez le beurre et laissez épaissir. Éteignez le feu et cassez l’œuf en remuant. Salez, poivrez.",
+    "Préchauffez le four à 180 °C (th. 6). Disposez une première couche d’aubergines dans le fond d’un plat à gratin. Étalez une grosse cuillerée de sauce tomate, parsemez de viande hachée, couvrez d’un peu de béchamel, puis recommencez jusqu’à épuisement des ingrédients.",
+    "Saupoudrez de fromage râpé et enfournez à mi-hauteur pour 30 minutes environ jusqu’à ce qu’une belle croûte bien dorée se forme à la surface de la moussaka."
+  ],
+  "notes": "Vous pouvez également faire griller les tranches d’aubergines sous le gril de votre four : 10 à 15 minutes selon sa puissance. Cette moussaka se congèle parfaitement."
+}

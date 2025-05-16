@@ -1,0 +1,61 @@
+{
+  "nom": "Lasagnes au saumon et épinards",
+  "type_plat": "Plats",
+  "origine": "",
+  "categorie": "Poisson",
+  "nb_personnes": 6,
+  "temps_preparation": 60,
+  "difficulte": "Facile",
+  "saisons": [
+    "Toutes saisons"
+  ],
+  "ingredients": [
+    {
+      "nom": "feuilles de pâte à lasagne",
+      "quantité": "12-14",
+      "unité": ""
+    },
+    {
+      "nom": "sauce béchamel",
+      "quantité": "500",
+      "unité": "ml"
+    },
+    {
+      "nom": "saumon",
+      "quantité": "200",
+      "unité": "g"
+    },
+    {
+      "nom": "épinard frais ou surgelé",
+      "quantité": "1",
+      "unité": "kilo"
+    },
+    {
+      "nom": "gruyère râpé",
+      "quantité": "100",
+      "unité": "g"
+    },
+    {
+      "nom": "feuilles de basilic frais",
+      "quantité": "2-3",
+      "unité": ""
+    },
+    {
+      "nom": "sel",
+      "quantité": "",
+      "unité": ""
+    },
+    {
+      "nom": "poivre",
+      "quantité": "",
+      "unité": ""
+    }
+  ],
+  "preparation": [
+    "Si vous cuisinez avec des épinards surgelés, les sortir 30 minutes avant. Faire cuire les lasagnes 2-3 minutes dans de l’eau bouillante salée. Égoutter et rincer à l’eau froide. Réserver. Faire votre béchamel et suivre les indications ici. Préchauffer le four à 200°c. Chauffer une poêle avec une goutte d’huile d’olive. Faire revenir le saumon afin qu’il s’émiette. Ajouter 2 pincée de poivre du rouge de pondichery de thiercelin.",
+    "Ajouter l’épinard et le basilic au saumon et mélanger le tout.",
+    "Huiler puis déposer une couche de lasagne au fond du plat. Recouvrir de saumon-épinard puis un peu de béchamel et ainsi de suite. Terminer par lasagne, béchamel et une fine couche de fromage râpé.",
+    "Enfourner le plat pendant 25-30 minutes afin d’obtenir une jolie teinte dorée. Accompagné ce plat d’une belle salade."
+  ],
+  "notes": ""
+}

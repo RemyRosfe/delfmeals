@@ -1,0 +1,80 @@
+{
+  "nom": "Parmentier de bœuf",
+  "type_plat": "Plats",
+  "origine": "",
+  "categorie": "Viande rouge",
+  "nb_personnes": 6,
+  "temps_preparation": 50,
+  "difficulte": "Normal",
+  "saisons": [
+    "Toutes saisons"
+  ],
+  "ingredients": [
+    {
+      "nom": "bœuf haché",
+      "quantité": "400",
+      "unité": "g"
+    },
+    {
+      "nom": "chair à saucisse",
+      "quantité": "200",
+      "unité": "g"
+    },
+    {
+      "nom": "oignons",
+      "quantité": "2",
+      "unité": ""
+    },
+    {
+      "nom": "persil ciselé surgelé",
+      "quantité": "3",
+      "unité": "cuil. à soupe"
+    },
+    {
+      "nom": "comté râpé",
+      "quantité": "100",
+      "unité": "g"
+    },
+    {
+      "nom": "beurre pour la poêle",
+      "quantité": "1",
+      "unité": "noisette"
+    },
+    {
+      "nom": "pommes de terre",
+      "quantité": "1.2",
+      "unité": "kg"
+    },
+    {
+      "nom": "beurre",
+      "quantité": "60",
+      "unité": "g"
+    },
+    {
+      "nom": "lait",
+      "quantité": "40",
+      "unité": "cl"
+    },
+    {
+      "nom": "noix muscade",
+      "quantité": "1",
+      "unité": "pincée"
+    },
+    {
+      "nom": "beurre pour le plat",
+      "quantité": "1",
+      "unité": "noisette"
+    },
+    {
+      "nom": "sel et poivre",
+      "quantité": "",
+      "unité": ""
+    }
+  ],
+  "preparation": [
+    "Épluchez les pommes de terre et coupez-les en deux. Dans une casserole d’eau bouillante salée, faites-les cuire 20 à 25 min selon leur grosseur. Épluchez les oignons et coupez-les finement. Dans une poêle, faites fondre la noisette de beurre. Ajoutez les oignons et faites-les revenir 5 min. Puis ajoutez la viande, la chair à saucisse et le persil. Laissez cuire 10 min environ en remuant régulièrement. Salez et poivrez.",
+    "Préchauffez le four à 200 °C (th. 6-7). Une fois les pommes de terre cuites, égouttez-les bien et passez-les au moulin à légumes. Ajoutez le lait, 50 g de beurre et la pincée de noix muscade. Mélangez énergiquement jusqu’à obtention d’une purée onctueuse.",
+    "Dans un plat à gratin beurré, déposez la viande. Puis recouvrez-la d’une belle couche de purée. Parsemez le tout de comté râpé. Ajoutez les 10 g de beurre restant coupé en petits morceaux sur le dessus du gratin avant de mettre au four 15 à 20 min."
+  ],
+  "notes": "POUR ALLER PLUS VITE: Remplacez la purée maison par de la purée surgelée. Vous éviterez ainsi les 25 min de cuisson pour les pommes de terre. LE COUP DE POUCE: Si vous n’avez pas de moulin à légumes, armez-vous de courage et écrasez vos pommes de terres à la fourchette. LE PETIT + DE CYRIL: Pour varier les plaisirs, variez les viandes et pourquoi pas un parmentier de confit de canard ? Dans ce cas-là, troquez la viande par la même quantité de confit de canard effiloché."
+}
