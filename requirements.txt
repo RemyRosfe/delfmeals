@@ -24,3 +24,6 @@ pandas==2.1.4
 # Développement et tests
 pytest==7.4.3
 pytest-cov==4.1.0
+
+# Ajout gunicorn pour render
+gunicorn==20.1.0
