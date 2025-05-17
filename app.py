@@ -1,6 +1,5 @@
 # app.py
 # Application Flask principale pour DelfMeals
-
 import os
 import sys
 from flask import Flask, render_template
@@ -84,6 +83,12 @@ def create_app(config_name='development'):
 
 # Créer l'application
 app = create_app(os.environ.get('FLASK_ENV', 'development'))
+
+# Initialiser la base au démarrage (seulement sur Render)
+if os.environ.get('RENDER') == 'true':
+    print("🔄 Render détecté - Initialisation de la base")
+    from init_db import initialiser_base
+    initialiser_base()
 
 if __name__ == '__main__':
     # Lancement de l'application en mode développement
